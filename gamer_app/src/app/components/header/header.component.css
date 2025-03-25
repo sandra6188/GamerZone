@@ -1,0 +1,44 @@
+.header {
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+    background: linear-gradient(to right, rgb(73, 20, 196), rgb(30, 139, 153));
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0px;
+
+    .brand-logo {
+        display: flex;
+        text-align: left;
+        width: 120px;
+    }
+
+    .sec-list {
+        text-align: right;
+        position:absolute;
+        bottom: 91%;
+        right: 60px;
+        /* display:inline-flex;
+        justify-content: space-around; */
+
+
+        .but-list {
+            background-color: rgb(22, 7, 88);
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            margin-left: 10px;
+        }
+
+        .link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .link-login {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 10px;
+        }
+    }
+}
