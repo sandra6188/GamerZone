@@ -1,7 +1,8 @@
 .background {
-  background-image: url('../../../../public/assets/img/logo3.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url('../../../../public/assets/img/logo5.webp');
+  /* background-size: cover; */
+  background-size: 90vh 50vh;
+  background-repeat: repeat;
   height: 100vh;
 }
 
@@ -13,10 +14,13 @@
   .card {
     width: 85%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    background:  linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
-    linear-gradient(127deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
-    linear-gradient(336deg, rgba(61, 53, 5, 0.8), rgba(0, 0, 255, 0) 70.71%),
-    linear-gradient(336deg, rgba(0, 225, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+    /* background: linear-gradient(to right, rgb(93, 208, 212), rgb(131, 105, 221)); */
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+    /* background: linear-gradient(217deg, rgba(161, 14, 125, 0.8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(23, 0, 230, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(5, 113, 156, 0.8), rgba(0, 0, 255, 0) 70.71%),
+    linear-gradient(336deg, rgba(42, 4, 148, 0.8), rgba(0, 0, 255, 0) 70.71%); */
+
     border-radius: 10px;
     overflow: hidden;
     /* text-align: justify; */
@@ -51,7 +55,7 @@
   }
 
   .card-description {
-    font-size: 18px;
+    font-size: 20px;
     color: #ffffff;
   }
 }

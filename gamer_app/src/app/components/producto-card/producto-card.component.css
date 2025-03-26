@@ -1,0 +1,64 @@
+.producto-card {
+  width: 100%;
+  min-height: 400px; /* Tamaño mínimo uniforme */
+  max-height: 0px; /* Tamaño máximo uniforme */
+  background: linear-gradient(to right, rgb(73, 20, 196), rgb(30, 139, 153)); /* Fondo oscuro tipo gamer */
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+  
+.prod-card-content {
+  padding: 0px;
+}
+
+.producto-card:hover {
+  transform: scale(1.10); /* Efecto de zoom al pasar el mouse */
+}
+
+.card-img {
+  width: 350px;
+  height: 240px;
+  object-fit: fill;
+}
+
+.prod-card-title {
+  font-weight: bold;
+  font-size: 21px;
+  /* margin-bottom: 2px; */
+  margin-top: 4px;
+  color: #facc15; /* Amarillo gamer */
+}
+
+.prod-card-description {
+  font-size: 15px;
+  /* margin-bottom: 10px; */
+  margin-bottom: 15px;
+  color: #ccc; /* Texto suave */
+  
+}
+
+/* .prod-card-genero {
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0px;
+  // background: #0011ff; 
+  display: inline-block;
+} */
+
+.bt-prod-card {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  background: linear-gradient(to right, rgb(48, 6, 148), rgb(17, 63, 148));
+  display: inline-block;
+  border-radius: 5px;
+  color: white;
+  border: none;
+}

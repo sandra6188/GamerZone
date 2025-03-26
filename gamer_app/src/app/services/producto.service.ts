@@ -1,0 +1,121 @@
+import { Injectable } from '@angular/core';
+import Producto from '../models/Producto';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductoService {
+
+  productos: Producto[];
+
+  constructor() {
+    this.productos = [
+      {
+        id: "1",
+        titulo: "The Legend of Zelda: Breath of the Wild",
+        descripcion: "Un juego de mundo abierto donde exploras Hyrule y enfrentas enemigos en una épica aventura.",
+        genero: "Aventura",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/729040/header.jpg"
+      },
+      {
+        id: "2",
+        titulo: "Hollow Knight",
+        descripcion: "Explora un mundo subterráneo lleno de misterios y desafiantes enemigos en este metroidvania indie.",
+        genero: "Plataformas",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg"
+      },
+      {
+        id: "3",
+        titulo: "God of War",
+        descripcion: "Kratos y su hijo Atreus viajan por la mitología nórdica en una historia de venganza y redención.",
+        genero: "Acción",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg"
+      },
+      {
+        id: "4",
+        titulo: "Celeste",
+        descripcion: "Un desafiante juego de plataformas sobre superar obstáculos físicos y emocionales.",
+        genero: "Plataformas",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/504230/header.jpg"
+      },
+      {
+        id: "5",
+        titulo: "Red Dead Redemption 2",
+        descripcion: "Explora el Salvaje Oeste en un mundo abierto con una historia profunda y realista.",
+        genero: "Aventura",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+      },
+      {
+        id: "6",
+        titulo: "Stardew Valley",
+        descripcion: "Un simulador de granja con exploración, relaciones y una historia relajante.",
+        genero: "Simulación",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg"
+      },
+      {
+        id: "7",
+        titulo: "Cyberpunk 2077",
+        descripcion: "Un RPG futurista en Night City con decisiones que afectan el mundo y la historia.",
+        genero: "RPG",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+      },
+      {
+        id: "8",
+        titulo: "Hades",
+        descripcion: "Un roguelike donde juegas como el hijo de Hades, intentando escapar del inframundo.",
+        genero: "Acción",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/1145360/header.jpg"
+      },
+      {
+        id: "9",
+        titulo: "Grand Theft Auto V",
+        descripcion: "Una historia criminal en Los Santos con tres protagonistas y un mundo abierto enorme.",
+        genero: "Acción",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+      },
+      {
+        id: "10",
+        titulo: "Cuphead",
+        descripcion: "Un juego de plataformas con estética de dibujos animados de los años 30 y una dificultad desafiante.",
+        genero: "Plataformas",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/268910/header.jpg"
+      },
+      {
+        id: "11",
+        titulo: "Elden Ring",
+        descripcion: "Un RPG de mundo abierto creado por FromSoftware con una historia de George R. R. Martin.",
+        genero: "RPG",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+      },
+      {
+        id: "12",
+        titulo: "Slay the Spire",
+        descripcion: "Un juego de construcción de mazos con mecánicas roguelike y estrategia profunda.",
+        genero: "Estrategia",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/646570/header.jpg"
+      },
+      {
+        id: "13",
+        titulo: "The Witcher 3: Wild Hunt",
+        descripcion: "Sigue la historia de Geralt de Rivia en un mundo de fantasía lleno de monstruos y decisiones difíciles.",
+        genero: "RPG",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg"
+      },
+      {
+        id: "14",
+        titulo: "Undertale",
+        descripcion: "Un RPG donde puedes elegir entre luchar o ser pacifista, con una historia única y personajes memorables.",
+        genero: "RPG",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/391540/header.jpg"
+      },
+      {
+        id: "15",
+        titulo: "Dark Souls III",
+        descripcion: "Un RPG de acción desafiante con combates intensos y una historia oculta en su mundo oscuro.",
+        genero: "RPG",
+        imagen: "https://cdn.cloudflare.steamstatic.com/steam/apps/374320/header.jpg"
+      }
+    ]
+    
+   }
+}
