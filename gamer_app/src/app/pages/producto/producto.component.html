@@ -1,18 +1,23 @@
 <app-header></app-header>
-    <section id="productos-page">
-        <p class="prod-p-ser">Nuestros Servicios</p>
-        <ul class="producto-list">
-            <div class="comentario-card" *ngFor="let producto of productoService.productos  | paginate: { itemsPerPage: 6, currentPage: page}">
-            <!-- @for (producto of productoService.productos; track producto.id) { -->
-                <li>
-                    <app-producto-card [producto]="producto"></app-producto-card>
-                </li>
-            <!-- } -->
+    <br>
+    <section class="card-pro">
+        <section id="productos-page">
+            <p class="prod-p-ser">Nuestros Servicios</p>
+            <ul class="producto-list">
+                <div class="comentario-card" *ngFor="let producto of productoService.productos  | paginate: { itemsPerPage: 6, currentPage: page}">
+                <!-- @for (producto of productoService.productos; track producto.id) { -->
+                    <li>
+                        <app-producto-card [producto]="producto"></app-producto-card>
+                    </li>
+                <!-- } -->
+                </div>
+            </ul>
+            <br>
+             <!-- Controles de paginación -->
+            <div class="class-pagination">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
             </div>
-        </ul>
+        </section>
     </section>
-    <!-- Controles de paginación -->
-    <div class="class-pagination">
-        <pagination-controls (pageChange)="page = $event"></pagination-controls>
-    </div>
+    <br>
 <app-footer></app-footer>

@@ -4,11 +4,11 @@
         <section class="comentarios-container">
             <div class="comentarios-grid">
                 <h2 class="h2-title-com">Comentarios</h2>
-                <textarea [(ngModel)]="comentario" class="class-com-input"  name="comentario_descripcion" id="comentario_descripcion"  rows="8" cols="111" placeholder="Escribe tu comentario aquí..."></textarea>
+                <textarea [(ngModel)]="comentario" class="class-com-input"  name="comentario_descripcion" id="comentario_descripcion"  rows="8"  placeholder="Escribe tu comentario aquí..."></textarea>
                 <div class="class-btn-comentario">
                     <button class="button-comentario" name="enviar" id="enviar">Enviar</button>
                 </div>
-                <div class="comentario-card" *ngFor="let comentario of comentarioService.comentarios  | paginate: { itemsPerPage: 3, currentPage: page}">
+                <div class="comentario-card" *ngFor="let comentario of comentarioService.comentarios  | paginate: { itemsPerPage: 4, currentPage: page}">
                     <img [src]="comentario.com_avatar" alt="Avatar de {{comentario.com_username}}" class="avatar">
                     <div class="comentario-content">
                         <h3 class="username">{{ comentario.com_username }}</h3>
