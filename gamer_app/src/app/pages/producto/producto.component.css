@@ -1,6 +1,6 @@
 .card-pro {
     width: 97%;
-    height: 1052px;
+    height: 952px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to right, rgb(0, 0, 0), rgb(24, 14, 165));
     border-radius: 10px;
@@ -12,8 +12,8 @@
 }
 
 #productos-page{
-    width: 88%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 10px auto;
 }
 
 /* h2 {
@@ -24,15 +24,16 @@
     font-size: 35px;
     color: rgb(255, 255, 255);
     font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
+    margin-top: 8px;
+    margin-left: 35px;
+    text-align: left;
 }
 
 /* Estilos para la lista de productos */
 .producto-list {
     display: flex; /* Alinea los elementos en fila */
     flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas si no caben */
-    gap: 20px; /* Espacio entre tarjetas */
+    gap: 30px; /* Espacio entre tarjetas */
     justify-content: center; /* Centra las tarjetas horizontalmente */
     list-style: none; /* Quita los estilos de lista */
     padding: 0;
@@ -41,7 +42,7 @@
 /* Estilos para cada tarjeta */
 .producto-list li {
     flex: 1 1 300px; /* Cada tarjeta ocupa un espacio flexible mínimo de 300px */
-    max-width: 340px; /* Ancho máximo por tarjeta */
+    max-width: 355px; /* Ancho máximo por tarjeta */
     list-style: none;
 }
 
@@ -68,7 +69,10 @@ app-producto-card {
 .class-pagination{
     border-radius: 10px;
     background: linear-gradient(to right, rgb(210, 191, 255), rgb(30, 139, 153));
-    max-width: 1063px;
+    max-width: 1126px;
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 38px;
 }

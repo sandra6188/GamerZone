@@ -1,6 +1,6 @@
 .producto-card {
   width: 100%;
-  min-height: 400px; /* Tamaño mínimo uniforme */
+  min-height: 380px; /* Tamaño mínimo uniforme */
   max-height: 0px; /* Tamaño máximo uniforme */
   background: linear-gradient(to right, rgb(73, 20, 196), rgb(30, 139, 153)); /* Fondo oscuro tipo gamer */
   color: #fff;
@@ -23,7 +23,7 @@
 }
 
 .card-img {
-  width: 350px;
+  width: 355px;
   height: 240px;
   object-fit: fill;
 }
@@ -61,4 +61,12 @@
   border-radius: 5px;
   color: white;
   border: none;
+  margin-bottom: 9px;
 }
+
+.bt-prod-card:hover,
+.bt-prod-card:focus {
+  box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+  transform: translateY(-0.45em);
+}
+

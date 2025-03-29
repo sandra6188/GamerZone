@@ -15,7 +15,7 @@
                 <p>(57) 31273834950</p>
             </div>
             <div class="lado-derecho">
-                <form>
+                <form (click)="redirectToLogin()">
                     <div class="form-group">
                         <input type="text" id="contacto_asunto" name="contacto_asunto" required>
                         <label for="asunto">Asunto</label>
@@ -41,7 +41,7 @@
                         <label for="comentario">Comentario</label>
                     </div>
             
-                    <button type="submit">Enviar</button>
+                    <button type="submit" >Enviar</button>
                 </form>
             </div>
         </div>

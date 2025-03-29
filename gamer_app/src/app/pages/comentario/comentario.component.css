@@ -1,6 +1,6 @@
 .card {
     width: 97%;
-    height: 1052px;
+    height: 952px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to right, rgb(74, 10, 158), rgb(0, 0, 0));
     border-radius: 10px;
@@ -13,11 +13,11 @@
 
 .comentarios-container {
     width: 88%;
-    margin: 20px auto;
+    /* margin: auto; */
 }
 
-.h2-title-com {
-    font-size: 40px;
+.title-p-com {
+    font-size: 35px;
     font-weight: bold;
     text-align: left;
     color: #ffffff;
@@ -114,9 +114,9 @@ textarea:focus {
 .class-pagination{
     border-radius: 10px;
     background: linear-gradient(to right, rgb(210, 191, 255), rgb(30, 139, 153));
-    /* max-width: 280px; */
+    max-width: 1190px;
     text-align: center;
-    /* margin-top:  130px; */
+    margin-top:  95px;
 }
 
 /* Medias para manejar responsive XD */

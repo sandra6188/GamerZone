@@ -5,40 +5,117 @@
     text-align: center;
     padding: 20px;
     border-radius: 0px;
-
-    .brand-logo {
-        display: flex;
-        text-align: left;
-        width: 120px;
-    }
-
-    .sec-list {
-        text-align: right;
-        position:absolute;
-        bottom: 91%;
-        right: 60px;
-        /* display:inline-flex;
-        justify-content: space-around; */
-
-
-        .but-list {
-            background-color: rgb(22, 7, 88);
-            border-radius: 10px;
-            border: none;
-            padding: 10px;
-            margin-left: 10px;
-        }
-
-        .link {
-            color: white;
-            text-decoration: none;
-        }
-
-        .link-login {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            margin-left: 10px;
-        }
-    }
 }
+
+.brand-logo {
+    display: flex;
+    text-align: left;
+    width: 120px;
+}
+
+.sec-list {
+    text-align: right;
+    position:absolute;
+    bottom: 93%;
+    right: 220px;
+   
+}
+
+.but-list {
+    background-color: rgb(22, 7, 88);
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    width: 125px;
+    height: 35px;
+}
+
+.sec-list-2 {
+    text-align: right;
+    position:absolute;
+    bottom: 1253px;
+    right: 30px;
+   
+}
+
+.class-div{
+    display:flex;
+    justify-content: space-around;
+}
+
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.link-login {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+/*Css de dropdown*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+
+    width: 170px; /* Ancho máximo del contenedor */
+    word-wrap: break-word; /* Rompe la palabra si es muy larga */
+    overflow-wrap: break-word; /* Alternativa para compatibilidad */
+    padding: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 15px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(22, 7, 88);
+    color: white;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logout {
+    font-weight: bold;
+}
+
+/*Fin Css de dropdown*/

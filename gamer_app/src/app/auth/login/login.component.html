@@ -8,18 +8,22 @@
             </div>
             <div class="log-lado-derecho">
                 <h3 class="h3-title-log">Login</h3>
-                <form>
+                <form (submit)="login()">
                     <div class="log-form-group">
-                        <input type="text" id="usuario_username" name="usuario_username" required>
+                        <input type="text" [(ngModel)]="username" name="usuario_username" required>
                         <label for="usuario_username">Username</label>
                     </div>
             
                     <div class="log-form-group">
-                        <input type="text" id="usuario_email" name="usuario_email" required>
-                        <label for="usuario_email">Email</label>
+                        <input type="password" [(ngModel)]="password" name="usuario_password" required>
+                        <label for="usuario_password">Contraseña</label>
                     </div>
+                    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
                     <button type="submit">Login</button>
+                    <button type="submit"  routerLink="/register">Register</button>
+                    <p class="label-log">¿Aun no tienes cuenta? Registrate</p>
                 </form>
+                
             </div>
         </div>
     </section>

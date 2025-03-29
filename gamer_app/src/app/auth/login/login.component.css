@@ -1,6 +1,6 @@
 .card-log {
     width: 97%;
-    height: 1052px;
+    height: 952px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to right, rgb(0, 0, 0), rgb(24, 14, 165));
     border-radius: 10px;
@@ -14,7 +14,7 @@
 /* Carta total que me permite colocar color en todo contenedor */
 .log-total {
     width: 90%;
-    height: 600px;
+    height: 690px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     /* background: linear-gradient(to right, rgba(98, 6, 219, 0.596), rgba(45, 158, 69, 0.479)); */
     background: #ffffff28;
@@ -127,6 +127,13 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.label-log{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
 }
 
 

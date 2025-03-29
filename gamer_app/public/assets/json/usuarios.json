@@ -1,0 +1,69 @@
+[
+    {
+      "id": 1,
+      "rol": "admin",
+      "nombre": "Juan",
+      "apellidos": "Pérez",
+      "username": "admin",
+      "email": "admin@example.com",
+      "celular": "1234567890",
+      "password": "admin123",
+      "confirmarPassword": "admin123"
+    },
+    {
+      "id": 2,
+      "rol": "admin",
+      "nombre": "Laura",
+      "apellidos": "Martínez",
+      "username": "laura Martinez",
+      "email": "laura.martinez@example.com",
+      "celular": "5678901234",
+      "password": "lauraAdmin456",
+      "confirmarPassword": "lauraAdmin456"
+    },
+    {
+      "id": 3,
+      "rol": "viewer",
+      "nombre": "Juanito",
+      "apellidos": "Gamer",
+      "username": "juanitoGamer",
+      "email": "juanito.gamer@example.com",
+      "celular": "0987654321",
+      "password": "password1",
+      "confirmarPassword": "password1"
+    },
+    {
+      "id": 4,
+      "rol": "viewer",
+      "nombre": "Carlos",
+      "apellidos": "López",
+      "username": "carlosGodOfWar",
+      "email": "carlos.lopez@example.com",
+      "celular": "1122334455",
+      "password": "password2",
+      "confirmarPassword": "password2"
+    },
+    {
+      "id": 5,
+      "rol": "viewer",
+      "nombre": "María",
+      "apellidos": "Maria SoulDark",
+      "username": "maria_souldark",
+      "email": "maria.souldark@example.com",
+      "celular": "2233445566",
+      "password": "password3",
+      "confirmarPassword": "password3"
+    },
+    {
+      "id": 6,
+      "rol": "viewer",
+      "nombre": "Shadow",
+      "apellidos": "Slayer",
+      "username": "shadow_slayer",
+      "email": "shadow.slayer@example.com",
+      "celular": "3344556677",
+      "password": "password4",
+      "confirmarPassword": "password4"
+    }
+  ]
+  
