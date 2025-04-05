@@ -39,6 +39,16 @@
    
 }
 
+.but-list-2 {
+    background-color: rgb(22, 7, 88);
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    margin-left: 10px;
+    width: 125px;
+    height: 40px;
+}
+
 .class-div{
     display:flex;
     justify-content: space-around;

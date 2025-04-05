@@ -1,0 +1,22 @@
+[
+    {
+        "contacto_id": 1,
+        "contacto_asunto": "Consulta general",
+        "contacto_nombrecompleto": "María Maria SoulDark",
+        "contacto_email": "maria.souldark@example.com",
+        "contacto_telefono": "2233445566",
+        "contacto_comentario": "Me gustaría recibir más detalles sobre su servicio.",
+        "contacto_fecha": "2025-03-29 09:00:00",
+        "id":5
+    },
+    {
+        "contacto_id": 2,
+        "contacto_asunto": "Horario de atención",
+        "contacto_nombrecompleto": "Shadow Slayer",
+        "contacto_email": "shadow.slayer@example.com",
+        "contacto_telefono": "3344556677",
+        "contacto_comentario": "¿Cuáles son los horarios de disponibilidad?",
+        "contacto_fecha": "2025-03-29 11:20:00",
+        "id":6
+    }
+]

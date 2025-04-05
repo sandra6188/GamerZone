@@ -1,16 +1,23 @@
 <article class="producto-card">
-    <!-- <img src="assets/img/logo.jpg" alt="Imagen del Juego" class="card-img"> -->
-    <img [src]="producto.imagen" [alt]="producto.titulo" class="card-img">
+    <img [src]="producto.imagen" [alt]="producto.titulo" class="card-img" alt="Imagen del Juego">
     <div class="prod-card-content">
       <div>
         <p class="prod-card-title">{{producto.titulo}}</p>
       </div>
-      <div>
+
+      <div *ngIf="perfil.usuario_rol =='viewer' || (perfil.usuario_rol !== 'viewer' && perfil.usuario_rol !== 'admin')">
         <p class="prod-card-description">{{producto.descripcion}}</p>
       </div>
       <!-- <div>
           <p class="prod-card-genero">{{producto.genero}}</p>
       </div> -->
-      <button class="bt-prod-card" (click)="redirectToLogin()">Ver mas</button>
+     
+      <div *ngIf="perfil.usuario_rol =='viewer' || (perfil.usuario_rol !== 'viewer' && perfil.usuario_rol !== 'admin')">
+        <button class="bt-prod-card" (click)="redirectToLogin()" >Ver mas</button>
+      </div>
+      <div class="div-buttons" *ngIf="perfil.usuario_rol =='admin'">
+        <button class="bt-prod-card-edit" routerLink="/">Actualizar</button>
+        <button class="bt-prod-card-delete"  routerLink="/">Eliminar</button>
+      </div>
     </div>
 </article>

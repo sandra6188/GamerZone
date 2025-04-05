@@ -1,0 +1,68 @@
+<app-header></app-header> 
+    <br>
+    <section class="card-log">
+        <div class="log-total">
+            <div class="log-lado-izquierdo">
+                <form (submit)="redirectToLogin()">
+                    <h3 class="h3-title-log" *ngIf="perfil.usuario_rol =='viewer'">Mi Perfil</h3>
+                    <h3 class="h3-title-log" *ngIf="perfil.usuario_rol =='admin'">{{perfil.usuario_nombre}} {{ perfil.usuario_apellidos}}</h3>
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="perfil.usuario_nombre"  name="usuario_nombrecompleto" required>
+                        <label for="usuario_nombrecompleto">Nombres</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="perfil.usuario_apellidos" name="usuario_apellidocompleto" required>
+                        <label for="usuario_apellidocompleto">Apellidos</label>
+                    </div>
+            
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="perfil.usuario_username" name="usuario_username" required>
+                        <label for="usuario_username">Username</label>
+                    </div>
+            
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="perfil.usuario_email" name="usuario_email" required>
+                        <label for="usuario_email">Email</label>
+                    </div>
+            
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="perfil.usuario_celular" name="usuario_celular" required>
+                        <label for="usuario_celular">Celular</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="password" [(ngModel)]="perfil.usuario_password" name="usuario_password" required>
+                        <label for="usuario_password">Contraseña</label>
+                    </div>
+                    <div class="log-form-group">
+                        <input type="password" [(ngModel)]="perfil.usuario_repeat_password" name="usuario_repeat_password" required>
+                        <label for="usuario_repeat_password">Confirme la contraseña</label>
+                    </div>
+                    <div class="log-form-group" *ngIf="perfil.usuario_rol =='admin' ">
+                        <input type="text" [(ngModel)]="perfil.usuario_rol" name="usuario_rol" required>
+                        <label for="usuario_rol">Rol</label>
+                    </div>
+                    <div class="log-form-butt">
+                        <button type="submit" class="butt-actualizar">Actualizar</button>
+                        <button type="submit" class="butt-regresar" routerLink="/">Regresar</button>
+                    </div>
+                </form>
+            </div>
+           
+            <div class="log-lado-derecho">
+                <div class="butt-foto">
+                    <button type="submit" class="butt-subirfoto">Subir Imagen</button>
+                </div>
+                <div class="lado-derecho-img">
+                   
+                    <img src="assets/img/user.jpg" alt="Juego" class="card-img">
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <br>
+<app-footer></app-footer>
+
+

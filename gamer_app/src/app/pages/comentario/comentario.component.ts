@@ -15,25 +15,39 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './comentario.component.css'
 })
 export class ComentarioComponent {
-
+  auth: any;
   page: number = 1;
+  itemsPerPage: any;
 
   comentarios: any[] = [];
   nuevoComentario: string = '';
+
+  auth_commit: any;
+  commit_fecha: any;
 
   constructor(public comentarioService: ComentarioService, public router: Router, public authService: AuthService){}
   
 
   ngOnInit(): void {
+
+    //Accede a usuario logueado
+    this.auth = this.authService.getRole();
+    if(['admin'].includes(this.authService.getRole())){
+      this.itemsPerPage = 5;
+    }else{
+      this.itemsPerPage = 3;
+    }
+
     this.comentarioService.comentarios$.subscribe(data => {
       this.comentarios = data;
-      console.log("Comentarios Json ",this.comentarios);
+      //console.log("Comentarios Json ",this.comentarios);
     });
   }
 
   redirectToLogin(){
     if(this.authService.isAuthenticated()){
-      if(this.authService.getRole() == 'viewer'){
+
+      if(['viewer', 'admin'].includes(this.authService.getRole())){
         this.comentarioService.comentarios$.subscribe(data => {
           this.comentarios = data;
           console.log("Comentarios Json ",this.comentarios);
@@ -42,42 +56,38 @@ export class ComentarioComponent {
       // console.log("Usuario Autenticado",this.authService.isAuthenticated());
     }else{
       this.router.navigate(['/login']);
-      console.log("Usuario No Autenticado",this.authService.isAuthenticated());
+      //console.log("Usuario No Autenticado",this.authService.isAuthenticated());
     }
     
   }
 
-  // agregarComentario(): void {
-  //   if (this.nuevoComentario.trim() === '') return;
-
-  //   const nuevo = {
-  //     id: (this.comentarios.length + 1).toString(),
-  //     com_username: "Usuario",
-  //     com_descripcion: this.nuevoComentario,
-  //     com_fecha: new Date().toISOString()
-  //   };
-  //   console.log("Nuevo comentario",nuevo);
-
-  //   this.comentarioService.agregarComentario(nuevo);
-  //   this.comentarios.unshift(nuevo); // Refresca la lista en tiempo real
-  //   this.nuevoComentario = '';
-  // }
-
   agregarComentario() {
+
     if(this.authService.isAuthenticated()){
-      if (this.nuevoComentario.trim()) {
+
+      if (this.nuevoComentario.trim() && ['viewer'].includes(this.authService.getRole())) {
+
+        //Accede a usuario logueado
+        this.auth_commit = this.authService.getCurrentUser();
+        //Accede a fecha y hora actual
+        this.commit_fecha = this.comentarioService.getFormattedDateTime();
+
         const nuevo = {
           id: (this.comentarios.length + 1).toString(),
-          com_username: 'UsuarioTest',
+          com_username: this.auth_commit?.username,
           com_descripcion: this.nuevoComentario,
-          com_avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-          com_fecha: '2025-01-01 10:00:00'//new Date().toLocaleString()
+          com_avatar: "../assets/img/user.jpg",
+          com_fecha: this.commit_fecha
         };
-        console.log("Nuevo comentario",nuevo);
+        // console.log("Nuevo comentario",nuevo);
 
         this.comentarioService.agregarComentario(nuevo);
         this.nuevoComentario = ''; // Limpiar el input
+        
+      }else if(['admin'].includes(this.authService.getRole())){
+        console.log("Rol admin");
       }
+   
     }else{
       this.router.navigate(['/login']);
       console.log("Usuario No Autenticado",this.authService.isAuthenticated());

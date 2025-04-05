@@ -34,6 +34,7 @@
   /* margin-bottom: 2px; */
   margin-top: 4px;
   color: #facc15; /* Amarillo gamer */
+  /* text-align: center; */
 }
 
 .prod-card-description {
@@ -41,6 +42,7 @@
   /* margin-bottom: 10px; */
   margin-bottom: 15px;
   color: #ccc; /* Texto suave */
+  /* text-align: center; */
   
 }
 
@@ -62,10 +64,58 @@
   color: white;
   border: none;
   margin-bottom: 9px;
+  /* text-align: center; */
 }
 
 .bt-prod-card:hover,
 .bt-prod-card:focus {
+  box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+  transform: translateY(-0.45em);
+}
+
+.div-buttons {
+  /* text-align: center; */
+  gap: 10%;
+}
+
+.bt-prod-card-edit {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  background: linear-gradient(to right, rgb(6, 79, 148), rgb(17, 148, 28));
+  display: inline-block;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  margin-bottom: 9px;
+  margin-right: 9px;
+
+}
+
+.bt-prod-card-edit:hover,
+.bt-prod-card-edit:focus {
+  box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+  transform: translateY(-0.45em);
+}
+
+
+
+.bt-prod-card-delete {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  background: linear-gradient(to right, rgb(148, 6, 6), rgb(148, 96, 17));
+  display: inline-block;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  margin-bottom: 9px;
+  margin-right: 9px;
+ 
+}
+
+.bt-prod-card-delete:hover,
+.bt-prod-card-delete:focus {
   box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
   transform: translateY(-0.45em);
 }

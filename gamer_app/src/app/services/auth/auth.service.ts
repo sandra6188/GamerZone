@@ -20,8 +20,8 @@ export class AuthService {
       this.users = data;
       console.log('Usuarios cargados en Json:', this.users);
     });
-   //localStorage.clear();// (Opcional) Borra todo el localStorage si es necesario
-   
+    //localStorage.clear();// (Opcional) Borra todo el localStorage si es necesario
+    // localStorage.removeItem('users'); // (Opcional) borra los datos del users nomas 
     console.log('Usuarios cargados en localStorage:', localStorage);
   }
 
@@ -35,7 +35,6 @@ export class AuthService {
     celular:string, 
     password: string,
     confirmarPassword:string): boolean {
-
       
     let localUsers = JSON.parse(localStorage.getItem('users') || '[]');
 

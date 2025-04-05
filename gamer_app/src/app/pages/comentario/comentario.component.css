@@ -26,10 +26,9 @@
 .class-com-input{
     border-radius: 10px;
     border: none;
-    padding: 12px;
+    /* padding: 12px;  */ /*daña la parte del responsive */
     font-size: 15px;
-    max-width: 100%;
-    width: 1011px;
+    width: 100%;
     resize: none;
     overflow: hidden;
     outline: none;
@@ -110,13 +109,62 @@ textarea:focus {
     color: #777;
 }
 
+.title-p-com-admin {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+}
+
+.bt-prod-card-edit {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+    background: linear-gradient(to right, rgb(6, 79, 148), rgb(17, 148, 28));
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    margin-bottom: 9px;
+    margin-right: 9px;
+  
+  }
+  
+  .bt-prod-card-edit:hover,
+  .bt-prod-card-edit:focus {
+    box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+    transform: translateY(-0.45em);
+  }
+  
+  
+  
+  .bt-prod-card-delete {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+    background: linear-gradient(to right, rgb(148, 6, 6), rgb(148, 96, 17));
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    margin-bottom: 9px;
+    margin-right: 9px;
+   
+  }
+  
+  .bt-prod-card-delete:hover,
+  .bt-prod-card-delete:focus {
+    box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+    transform: translateY(-0.45em);
+  }
+
 /* Paginación */
 .class-pagination{
     border-radius: 10px;
     background: linear-gradient(to right, rgb(210, 191, 255), rgb(30, 139, 153));
-    max-width: 1190px;
+    max-width: 100%;
     text-align: center;
-    margin-top:  95px;
+    /* margin-top:  95px; */
 }
 
 /* Medias para manejar responsive XD */

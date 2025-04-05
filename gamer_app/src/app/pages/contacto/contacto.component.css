@@ -6,7 +6,7 @@
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s;
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     margin: auto;
 }
@@ -14,7 +14,7 @@
 /* Carta total que me permite colocar color en todo contenedor */
 .carta-total {
     width: 90%;
-    height: 600px;
+    height: 630px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     /* background: linear-gradient(to right, rgba(98, 6, 219, 0.596), rgba(45, 158, 69, 0.479)); */
     background: #ffffff28;
@@ -24,6 +24,8 @@
     display: flex;
     justify-content: space-around;
     margin: auto;
+    /* margin-left: 58px; */
+    margin-top: 120px;
 }
 /* Fin carta total*/
 
@@ -93,15 +95,18 @@ label {
 
 /* Para textarea, ajustamos el label en la parte superior */
 .form-group textarea:focus + label,
-.form-group textarea:valid + label {
-    bottom: 113px; /* Ajusta la altura en textarea */
+.form-group textarea:valid + label 
+{
+    bottom: 100px; /* Ajusta la altura en textarea */
+    font-size: 12px;
 }
 
 /* Mover el label cuando se escribe en el input */
 input:focus + label,
 input:valid + label,
-textarea:focus + label,
-textarea:valid + label {
+textarea:focus + label
+textarea:valid + label 
+{
     bottom: 40px;
     font-size: 12px;
     color: #ffffff;
@@ -123,18 +128,135 @@ button:hover {
 }
 
 
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+    width: 400px;
+    display: flex;
+}
+  
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    
+}
+
 /* Medias para manejar responsive XD */
 @media (max-width: 768px) {
     .carta-total {
         flex-direction: column;
         width: 90%;
         height: 1000px;
+        margin-left: 27px;
+        margin-top: 40px;
+        height: 830px;
+    }
+
+    .h2-title-cont {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+    }
+    
+     /*Lados de carta*/
+     .lado-izquierdo {
+        flex: 1; /* Ocupa el mismo espacio que .lado-derecho */
+        padding: 0px;
+        /* background: #f4f4f434; */
+        color: white;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .lado-derecho {
+        flex: 1; /* Ocupa el mismo espacio que .lado-izquierdo */
+        padding: 0px;
+        color: white;
     }
 
     form {
+        display: flex;
+        flex-direction: column;
+        width: 0px;
+    }
+    
+    .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 8px 0;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        background: transparent;
+        outline: none;
+        font-size: 16px;
+        color: #ffffff;
+        resize: none;
+    }
+    
+    label {
+        position: absolute;
+        left: 0;
+        bottom: 8px;
+        font-size: 20px;
+        color: #ffffff;
+        transition: all 0.3s ease-in-out;
+        pointer-events: none; /* Para que el label no interfiera con la selección del input */
+    }
+    
+    /* Ajuste especial para textarea*/
+    .form-group textarea {
+        padding-top: 20px; /* Agregar un pequeño espacio superior */
+    }
+    
+    /* Para textarea, ajustamos el label en la parte superior */
+    .form-group textarea:focus + label,
+    .form-group textarea:valid + label 
+    {
+        bottom: 100px; /* Ajusta la altura en textarea */
+        font-size: 12px;
+    }
+    
+    /* Mover el label cuando se escribe en el input */
+    input:focus + label,
+    input:valid + label,
+    textarea:focus + label
+    textarea:valid + label 
+    {
+        bottom: 40px;
+        font-size: 12px;
+        color: #ffffff;
+    }
+    
+    button {
+        margin-top: 0px;
+        padding: 10px;
+        background: linear-gradient(to right, rgb(73, 20, 196), rgb(30, 139, 153));
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    /*Fin Lados de carta*/
+        form {
         display: flex;
         flex-direction: column;
         width: 400px;
         margin: 10px auto;
     }
 }
+

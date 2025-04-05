@@ -3,7 +3,7 @@
         <img class="brand-logo" src="assets/img/logo2.png" alt="Logo">
         <img class="brand-logo" src="assets/img/logo_name.png" alt="Logo">
         <section class="sec-list">
-            {{ user.rol }}
+            
             <div class="class-div" *ngIf="user.rol =='viewer' || (user.rol !== 'viewer' && user.rol !== 'admin')">
                 <button class="but-list"><a routerLink="/" class="link">Sobre Nosotros</a></button>
                 <button class="but-list"><a routerLink="/productos" class="link">Servicios</a></button>
@@ -11,19 +11,18 @@
                 <button class="but-list"><a routerLink="/contactos" class="link">Contactos</a></button>
             </div>
             <div class="class-div" *ngIf="user.rol =='admin'">
-                <!-- <button class="but-list"><a routerLink="/" class="link">Sobre Nosotros</a></button> -->
-                <button class="but-list"><a routerLink="/productos" class="link">Servicios</a></button>
-                <button class="but-list"><a routerLink="/comentarios" class="link">Reseñas</a></button>
-                <button class="but-list"><a routerLink="/contactos" class="link">Contactos / Usuarios</a></button>
+                <button class="but-list-2"><a routerLink="/sobrenosotros" class="link">Sobre Nosotros</a></button>
+                <button class="but-list-2"><a routerLink="/productos" class="link">Servicios</a></button>
+                <button class="but-list-2"><a routerLink="/comentarios" class="link">Reseñas</a></button>
+                <button class="but-list-2"><a routerLink="/usuario" class="link">Contactos / Usuarios</a></button>
             </div>
         </section>
         <section class="sec-list-2">
             <div class="class-div" *ngIf="user.rol == 'admin'">
-                <!-- <button class="but-close" *ngIf="user" (click)="logout()">Cerrar sesión</button> -->
                 <div class="dropdown">
                     <button class="dropdown-btn">{{ user.username }} ⌵</button>
                     <div class="dropdown-content">
-                        <a href="#">Mi perfil</a>
+                        <a routerLink="/perfil">Mi perfil</a>
                         <a href="#">Mi carrito</a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="logout" *ngIf="user" (click)="logout()">Cerrar sesión</a>
@@ -31,11 +30,10 @@
                 </div>
             </div>
             <div class="class-div" *ngIf="user.rol == 'viewer'">
-                <!-- <button class="but-close" *ngIf="user" (click)="logout()"></button> -->
                 <div class="dropdown">
-                    <button class="dropdown-btn">{{ user.username }} ⌵</button>
+                    <button class="dropdown-btn">{{ user.username }}  <!--{{ user.rol }} -->⌵</button>
                     <div class="dropdown-content">
-                        <a href="#">Mi perfil</a>
+                        <a routerLink="/perfil">Mi perfil</a>
                         <a href="#">Mi carrito</a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="logout" *ngIf="user" (click)="logout()">Cerrar sesión</a>
