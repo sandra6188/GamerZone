@@ -20,6 +20,11 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
+    if (!this.username || !this.password) {
+      this.errorMessage = 'Todos los campos son obligatorios.';
+      return;
+    }
+
     if (this.authService.login(this.username, this.password)) {
       this.router.navigate(['/sobrenosotros']); // Redirige después del login
       console.log("Hola dentro");

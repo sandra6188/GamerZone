@@ -25,6 +25,9 @@ export class ComentarioComponent {
   auth_commit: any;
   commit_fecha: any;
 
+  errorMessage: string = '';
+  successMessage: string = '';
+
   constructor(public comentarioService: ComentarioService, public router: Router, public authService: AuthService){}
   
 
@@ -45,6 +48,7 @@ export class ComentarioComponent {
   }
 
   redirectToLogin(){
+
     if(this.authService.isAuthenticated()){
 
       if(['viewer', 'admin'].includes(this.authService.getRole())){
@@ -64,6 +68,13 @@ export class ComentarioComponent {
   agregarComentario() {
 
     if(this.authService.isAuthenticated()){
+      
+      if (!this.nuevoComentario) {
+        this.errorMessage = 'Debe agregar un comentario o reseña';
+        return;
+      }else{
+        this.errorMessage = "";
+      }
 
       if (this.nuevoComentario.trim() && ['viewer'].includes(this.authService.getRole())) {
 

@@ -41,11 +41,9 @@
                         <input type="password" [(ngModel)]="usuario_repeat_password" name="usuario_repeat_password" required>
                         <label for="usuario_repeat_password">Confirme la contraseña</label>
                     </div>
-            
-                    <button type="submit">Register</button>
                     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
                     <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
-
+                    <button type="submit">Register</button>
                     <button type="submit" routerLink="/login">Login</button>
                     <p class="label-regis" >¿Ya tienes cuenta? Logueate</p>
                 </form>

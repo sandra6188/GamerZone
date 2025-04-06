@@ -28,6 +28,9 @@ export class PerfilComponent {
     usuario_repeat_password: ''
   };
 
+  errorMessage: string = '';
+  successMessage: string = '';
+
   constructor(public router: Router, public authService: AuthService){}
 
 
@@ -47,10 +50,45 @@ export class PerfilComponent {
   }
   
   redirectToLogin(){
+
+    if (!this.perfil.usuario_nombre || !this.perfil.usuario_apellidos || !this.perfil.usuario_username || 
+      !this.perfil.usuario_email || !this.perfil.usuario_celular || !this.perfil.usuario_password) {
+      this.errorMessage = 'Todos los campos son obligatorios.';
+      return;
+    }
+
+    if (!this.validateEmail(this.perfil.usuario_email)) {
+      this.errorMessage = 'El formato del email es incorrecto.';
+      return;
+    }
+
+    if (this.perfil.usuario_celular.length !== 10 || !/^\d+$/.test(this.perfil.usuario_celular)) {
+      this.errorMessage = 'El celular debe contener 10 dígitos numéricos.';
+      return;
+    }
+
+    if (this.perfil.usuario_password.length < 5) {
+      this.errorMessage = 'La contraseña debe tener al menos 5 caracteres.';
+      return;
+    }
+
+    if (this.perfil.usuario_password !== this.perfil.usuario_repeat_password && this.perfil.usuario_password && this.perfil.usuario_repeat_password) {
+      this.errorMessage = 'Las contraseñas no coinciden.';
+      return;
+    }else{
+      this.errorMessage = '';
+    }
+
     if(this.authService.isAuthenticated()){
 
     }else{
 
     }
+  }
+
+  //Función para validar emails
+  private validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 }

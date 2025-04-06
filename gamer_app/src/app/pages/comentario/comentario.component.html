@@ -4,12 +4,15 @@
         <section class="comentarios-container">
             <div class="comentarios-grid">
                 <form (submit)="redirectToLogin()">
+                    
                     <div *ngIf="auth =='viewer' || (auth !== 'viewer' && auth !== 'admin')">
                         <p class="title-p-com">Comentario</p>
+                        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
                         <textarea [(ngModel)]="nuevoComentario" class="class-com-input"  name="comentario_descripcion" rows="8"  placeholder="Escribe tu comentario aquí..."></textarea>
                         <button class="button-comentario" name="enviar" (click)="agregarComentario()" >Enviar</button>
                     </div>
                     <p class="title-p-com-admin" *ngIf="auth =='admin'">Listar Comentarios</p>
+                    
                 </form>
                 
                 <div class="comentario-card" *ngFor="let comentario of comentarios  | paginate: { itemsPerPage: itemsPerPage, currentPage: page}">

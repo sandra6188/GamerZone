@@ -4,7 +4,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ export class RegisterComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) {}
 
   register() {
     if (this.usuario_password !== this.usuario_repeat_password) {
@@ -31,7 +31,28 @@ export class RegisterComponent {
       return;
     }
 
-    if (this.authService.register(
+    if (!this.usuario_nombrecompleto || !this.usuario_apellidocompleto || !this.usuario_username || 
+      !this.usuario_email || !this.usuario_celular || !this.usuario_password || !this.usuario_repeat_password) {
+      this.errorMessage = 'Todos los campos son obligatorios.';
+      return;
+    }
+
+    if (!this.validateEmail(this.usuario_email)) {
+      this.errorMessage = 'El formato del email es incorrecto.';
+      return;
+    }
+
+    if (this.usuario_celular.length !== 10 || !/^\d+$/.test(this.usuario_celular)) {
+      this.errorMessage = 'El celular debe contener 10 dígitos numéricos.';
+      return;
+    }
+
+    if (this.usuario_password.length < 5) {
+      this.errorMessage = 'La contraseña debe tener al menos 5 caracteres.';
+      return;
+    }
+
+    this.authService.register(
       'viewer', 
       this.usuario_nombrecompleto,
       this.usuario_apellidocompleto,
@@ -40,14 +61,21 @@ export class RegisterComponent {
       this.usuario_celular,
       this.usuario_password,
       this.usuario_repeat_password
-    )) {
+    ).subscribe({
+      next: () => {
+        this.successMessage = 'Registro exitoso. Redirigiendo al login...';
+        setTimeout(() => this.router.navigate(['/login']), 2000);
+      },
+      error: () => {
+        this.errorMessage = 'El usuario ya existe o hubo un error en el registro.';
+      }
+    });
+  }
 
-      this.successMessage = 'Registro exitoso. Redirigiendo al login...';
-      setTimeout(() => this.router.navigate(['/login']), 2000);
-
-    } else {
-      this.errorMessage = 'El usuario ya existe.';
-    }
+  //Función para validar emails
+  private validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 
   

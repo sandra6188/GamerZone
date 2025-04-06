@@ -43,6 +43,8 @@
                         <input type="text" [(ngModel)]="perfil.usuario_rol" name="usuario_rol" required>
                         <label for="usuario_rol">Rol</label>
                     </div>
+                    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+                    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
                     <div class="log-form-butt">
                         <button type="submit" class="butt-actualizar">Actualizar</button>
                         <button type="submit" class="butt-regresar" routerLink="/productos">Regresar</button>

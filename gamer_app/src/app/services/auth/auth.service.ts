@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +35,12 @@ export class AuthService {
     email:string, 
     celular:string, 
     password: string,
-    confirmarPassword:string): boolean {
+    confirmarPassword:string): Observable<boolean> {
       
     let localUsers = JSON.parse(localStorage.getItem('users') || '[]');
 
     if ([...this.users, ...localUsers].some((u: any) => u.username === username)) {
-      return false; // Usuario ya existe
+      return of(false); // Usuario ya existe
     }
 
     var id_maximo = (this.users.length + localUsers.length) + 1;
@@ -61,7 +62,7 @@ export class AuthService {
 
     localUsers.push(newUser);
     localStorage.setItem('users', JSON.stringify(localUsers));
-    return true;
+    return of(true);
   }
 
 

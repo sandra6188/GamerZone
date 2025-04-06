@@ -11,11 +11,17 @@ ul{
 
 .error {
     color: red;
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 18px;
+    margin-top: 1px;
     text-align: center;
+    font-weight: bold;
 }
 
-
-
+.success {
+    color: rgb(2, 163, 23);
+    font-size: 18px;
+    margin-top: 1px;
+    text-align: center;
+    font-weight: bold;
+}
 
