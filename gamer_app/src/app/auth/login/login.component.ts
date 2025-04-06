@@ -21,7 +21,7 @@ export class LoginComponent {
 
   login() {
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/']); // Redirige después del login
+      this.router.navigate(['/sobrenosotros']); // Redirige después del login
       console.log("Hola dentro");
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
