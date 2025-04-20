@@ -1,31 +1,34 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import Producto from '../../models/Producto';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
+import { AuthService } from '../../services/auth/auth.service';
+import Producto from '../../models/Producto';
 
 @Component({
-  selector: 'app-detail-producto',
+  selector: 'app-detail-addcarrito',
   imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, RouterLink],
-  templateUrl: './detail-producto.component.html',
-  styleUrl: './detail-producto.component.css'
+  templateUrl: './detail-addcarrito.component.html',
+  styleUrl: './detail-addcarrito.component.css'
 })
-export class DetailProductoComponent {
 
+export class DetailAddcarritoComponent {
+
+  /*Nota lo comentado no se esta utilizando ya que esto es visual para el rol viewer */
+  
   // producto = Input<Producto>
   @Input() producto!: Producto; //De padre a hijo
-  @ViewChild('inputImagen') inputImagenRef!: ElementRef<HTMLInputElement>; // para acceder al input file y usado para interactuar con el input de archivo desde el código TypeScript.
+  //@ViewChild('inputImagen') inputImagenRef!: ElementRef<HTMLInputElement>; // para acceder al input file y usado para interactuar con el input de archivo desde el código TypeScript.
 
   auth: any;
   errorMessage: string = '';
   successMessage: string = '';
 
-  imagenPreview: string | null = null;
-  nuevaImagenBase64: string | null = null;
+   imagenPreview: string | null = null;
+  // nuevaImagenBase64: string | null = null;
 
   
   constructor(public router: Router, private authService: AuthService, private  route: ActivatedRoute, private productoService: ProductoService){}
@@ -67,19 +70,19 @@ export class DetailProductoComponent {
     if(this.authService.isAuthenticated()){
       if(['viewer'].includes(this.authService.getRole())){
 
-      }else if(['admin'].includes(this.authService.getRole())){
+      }/*else if(['admin'].includes(this.authService.getRole())){
         if (this.producto.id && this.producto.id !== 0) {
           this.actualizarProducto();
         } else {
           this.registrarProducto();
         }
-      }
+      }*/
     }else{
       console.log("Usuario No Autenticado",this.authService.isAuthenticated());
     }
   }
 
-  actualizarProducto(): void {
+  /*actualizarProducto(): void {
     
     if (!this.validarCampos()) return;
 
@@ -162,6 +165,5 @@ export class DetailProductoComponent {
     }
   
     return true;
-  }
-  
+  }*/
 }

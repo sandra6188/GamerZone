@@ -8,7 +8,8 @@
       "email": "admin@example.com",
       "celular": "1234567890",
       "password": "admin123",
-      "confirmarPassword": "admin123"
+      "confirmarPassword": "admin123",
+      "imagen": "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
       "id": 2,
@@ -30,7 +31,8 @@
       "email": "juanito.gamer@example.com",
       "celular": "0987654321",
       "password": "password1",
-      "confirmarPassword": "password1"
+      "confirmarPassword": "password1",
+      "imagen": "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
       "id": 4,
@@ -41,7 +43,8 @@
       "email": "carlos.lopez@example.com",
       "celular": "1122334455",
       "password": "password2",
-      "confirmarPassword": "password2"
+      "confirmarPassword": "password2",
+      "imagen": "https://randomuser.me/api/portraits/men/10.jpg"
     },
     {
       "id": 5,
@@ -52,7 +55,8 @@
       "email": "maria.souldark@example.com",
       "celular": "2233445566",
       "password": "password3",
-      "confirmarPassword": "password3"
+      "confirmarPassword": "password3",
+      "imagen": "https://randomuser.me/api/portraits/women/3.jpg"
     },
     {
       "id": 6,
@@ -63,7 +67,8 @@
       "email": "shadow.slayer@example.com",
       "celular": "3344556677",
       "password": "password4",
-      "confirmarPassword": "password4"
+      "confirmarPassword": "password4",
+      "imagen": "https://randomuser.me/api/portraits/men/15.jpg"
     }
   ]
   

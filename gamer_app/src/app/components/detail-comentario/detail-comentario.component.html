@@ -1,0 +1,65 @@
+<app-header></app-header> 
+    <br>
+    <section class="card-log">
+        <div class="log-total" >
+
+             <!-- Lado derecho: Imagen -->
+            <div class="log-lado-derecho">
+                <div class="butt-foto">
+                    <input type="file" #inputImagen (change)="onImagenSeleccionada($event)" accept="image/*" hidden>
+                    <button type="button" class="butt-subirfoto" (click)="abrirInputImagen()">Subir Imagen</button>
+                </div>
+                <div class="lado-derecho-img">
+                    <img [src]="imagenPreview || 'assets/img/user.jpg'" alt="Vista previa" class="card-img" />
+                </div>
+            </div>
+
+            <!-- Lado izquierdo: Formulario -->
+            <div class="log-lado-izquierdo">
+                <form (submit)="redirectToLogin()">
+                    <h3 class="h3-title-log" >{{comentario.com_username}}</h3>
+                    <br>
+
+                    <!-- Username -->
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="comentario.com_username"  name="comentario_username" [disabled]="true" placeholder="" required>
+                        <label for="com_username">Username</label>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="log-form-group">
+                        <textarea [(ngModel)]="comentario.com_descripcion" class="class-com-input"  name="comentario_descripcion" rows="6" placeholder="Comentario del usuario ..." required></textarea>
+                        <label for="com_descripcion">Descripcion</label>
+                    </div>
+
+                    <!-- Fecha (solo lectura) -->
+                    <div class="log-form-group" [class.has-value]="comentario.com_fecha">
+                        <input type="datetime-local" [(ngModel)]="comentario.com_fecha" name="comentario_fecha" required/>
+                        <label for="com_fecha">Fecha y Hora Publicacion</label>
+                    </div>
+            
+                    <!-- <div class="log-form-group">
+                        <select name="comentario_clasificacion" [(ngModel)]="comentario.clasificacion" disabled>
+                          <option value="Excelente">Excelente</option>
+                          <option value="Bueno">Bueno</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Malo">Malo</option>
+                        </select>
+                        <label for="comentario_clasificacion">Clasificación</label>
+                     </div> -->
+            
+                    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+                    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+                    <div class="log-form-butt">
+                        <button type="submit" class="butt-actualizar"> {{ comentario.id ? 'Actualizar' : 'Registrar' }}</button>
+                        <button type="button" *ngIf="auth =='admin'" class="butt-regresar" (click)="regresarListar()" >Regresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+ 
+    <br>
+<app-footer></app-footer>
+
+

@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ComentarioService } from '../../services/comentario.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import Comentario from '../../models/Comentario';
 
 @Component({
   selector: 'app-comentario',
-  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, NgxPaginationModule],
+  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, NgxPaginationModule, RouterLink],
   templateUrl: './comentario.component.html',
   styleUrl: './comentario.component.css'
 })
 export class ComentarioComponent {
+
   auth: any;
   page: number = 1;
   itemsPerPage: any;
@@ -41,9 +43,23 @@ export class ComentarioComponent {
       this.itemsPerPage = 3;
     }
 
-    this.comentarioService.comentarios$.subscribe(data => {
-      this.comentarios = data;
-      //console.log("Comentarios Json ",this.comentarios);
+    // Suscribirse al BehaviorSubject de usuarios
+    this.authService.users$.subscribe(users => {
+      // Obtener la lista de usuarios
+      const usersList = users;
+
+      // Suscribirse a los comentarios y asignar las imágenes
+      this.comentarioService.comentarios$.subscribe(data => {
+        this.comentarios = data;
+
+        // Asignar la imagen de usuario a cada comentario
+        this.comentarios.forEach(comentario => {
+          const user = usersList.find(u => u.id === comentario.user_id); // Buscar el usuario por user_id
+           // Verificar si se encontró el usuario y si su imagen es válida
+           comentario.imagen = user && user.imagen ? user.imagen : 'assets/img/user.jpg'; // Imagen predeterminada
+        });
+        console.log("Comentarios Json ",this.comentarios);
+      });
     });
   }
 
@@ -65,7 +81,7 @@ export class ComentarioComponent {
     
   }
 
-  agregarComentario() {
+  agregarComentario(): void {
 
     if(this.authService.isAuthenticated()){
       
@@ -82,13 +98,21 @@ export class ComentarioComponent {
         this.auth_commit = this.authService.getCurrentUser();
         //Accede a fecha y hora actual
         this.commit_fecha = this.comentarioService.getFormattedDateTime();
+       
+        // // Si encontramos el comentario, asignamos el avatar correspondiente
+        // let avatar = "../assets/img/user.jpg"; // Imagen predeterminada
+
+        // if (this.auth_commit.imagen) {
+        //   // Si el comentario existe, asignamos el avatar del comentario
+        //   avatar = this.auth_commit.imagen;
+        // }
 
         const nuevo = {
           id: (this.comentarios.length + 1).toString(),
           com_username: this.auth_commit?.username,
           com_descripcion: this.nuevoComentario,
-          com_avatar: "../assets/img/user.jpg",
-          com_fecha: this.commit_fecha
+          com_fecha: this.commit_fecha,
+          user_id: this.auth_commit?.id // Añadir el user_id
         };
         // console.log("Nuevo comentario",nuevo);
 
@@ -105,5 +129,19 @@ export class ComentarioComponent {
     }
   }
 
+
+  eliminarComentario(id: string): void {
+    if(this.authService.isAuthenticated()){
+      // Confirmación de eliminación
+      const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este comentario?');
+      if (confirmDelete) {
+        // Llamamos al servicio para eliminar el comentario
+        this.comentarioService.eliminarComentario(id); 
+        console.log('Comentario eliminado con éxito');
+      }
+    }else{
+      console.log("Usuario No Autenticado",this.authService.isAuthenticated());
+    }
+  }
   
 }

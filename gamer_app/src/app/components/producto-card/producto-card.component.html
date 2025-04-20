@@ -16,8 +16,8 @@
         <button class="bt-prod-card" (click)="redirectToLogin()" >Ver mas</button>
       </div>
       <div class="div-buttons" *ngIf="perfil.usuario_rol =='admin'">
-        <button class="bt-prod-card-edit" routerLink="/">Actualizar</button>
-        <button class="bt-prod-card-delete"  routerLink="/">Eliminar</button>
+        <button class="bt-prod-card-edit"  [routerLink]="['/detail-producto', producto.id]">Actualizar</button>
+        <button class="bt-prod-card-delete"  (click)="redirectToLogin()" >Eliminar</button>
       </div>
     </div>
 </article>

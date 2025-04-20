@@ -9,7 +9,7 @@
 .sec-home {
   display: flex;
   justify-content: space-around;
-  margin-top: 14%;
+  margin-top: 5%;
 
   .card {
     width: 85%;

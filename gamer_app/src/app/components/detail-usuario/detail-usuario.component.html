@@ -1,0 +1,84 @@
+<app-header></app-header> 
+    <br>
+    <section class="card-log">
+        <div class="log-total">
+            <div class="log-lado-derecho">
+                <div class="butt-foto">
+                    <input type="file" #inputImagen (change)="onImagenSeleccionada($event)" accept="image/*" hidden>
+                    <button type="button" class="butt-subirfoto" (click)="abrirInputImagen()">Subir Imagen</button>
+                </div>
+                <div class="lado-derecho-img">
+                    <img [src]="imagenPreview || 'assets/img/user.jpg'" alt="Vista previa" class="card-img" />
+                </div>
+            </div>
+            <div class="log-lado-izquierdo">
+                <form (submit)="redirectToLogin()">
+                    <h3 class="h3-title-log" >{{usuario.nombre}} {{usuario.apellidos}}</h3>
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="usuario.nombre"  name="usuario_nombrecompleto" required>
+                        <label for="usuario_nombrecompleto">Nombre</label>
+                    </div>
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="usuario.apellidos"  name="usuario_apellidos" required>
+                        <label for="usuario_apellidos">apellidos</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="usuario.username"  name="usuario_username" required>
+                        <label for="Username">Username</label>
+                    </div>
+
+                    <div *ngIf="isEditMode" class="log-form-group">
+                        <input type="text" [(ngModel)]="asunto"  name="usuario_asunto"  [disabled]="true" required>
+                        <label for="usuario_asunto">Asunto</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="usuario.email"  name="usuario_email" required>
+                        <label for="usuario_email">Email</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="text" [(ngModel)]="usuario.celular"  name="usuario_celular" required>
+                        <label for="usuario_celular">Celular</label>
+                    </div>
+
+                    <div *ngIf="isEditMode" class="log-form-group">
+                        <textarea [(ngModel)]="asuntoComentario" class="class-com-input"  name="usuario_comentario" rows="5" [disabled]="true" placeholder="Descripción del juego ..." required></textarea>
+                        <label for="usuario_comentario">Comentario</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="password" [(ngModel)]="usuario.password"  name="usuario_password" [disabled]="false" required>
+                        <label for="usuario_password">Contraseña</label>
+                    </div>
+
+                    <div class="log-form-group">
+                        <input type="password" [(ngModel)]="usuario.confirmarPassword"  name="usuario_confirmarPassword" [disabled]="false" required>
+                        <label for="usuario_confirmarPassword">Confirmar Contraseña</label>
+                    </div>
+            
+                    <div class="log-form-group">
+                        <select  name="rol" [(ngModel)]="usuario.rol" required>
+                            <option value=" ">-- Selecciona un rol --</option>
+                            <option value="admin">Admin</option>
+                            <option value="viewer">Viewer</option>
+                          </select>
+                        <label for="rol">Rol</label>
+                    </div>
+            
+                    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+                    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+                    <div class="log-form-butt">
+                        <button type="submit" class="butt-actualizar"> {{ usuario.id ? 'Actualizar' : 'Registrar' }}</button>
+                        <button type="submit" class="butt-regresar" routerLink="/usuario">Regresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+ 
+    <br>
+<app-footer></app-footer>
+
+

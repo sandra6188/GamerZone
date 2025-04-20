@@ -2,7 +2,7 @@
     width: 97%;
     height: 952px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to right, rgb(0, 0, 0), rgb(24, 14, 165));
+    background: linear-gradient(to right, rgb(16, 5, 80), rgb(5, 23, 82));
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s;
@@ -17,7 +17,7 @@
     height: 690px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     /* background: linear-gradient(to right, rgba(98, 6, 219, 0.596), rgba(45, 158, 69, 0.479)); */
-    background: #dcdfec2d;
+    background: linear-gradient(to right, rgb(56, 9, 167), rgb(17, 88, 97)); /* Fondo oscuro tipo gamer */
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s;
@@ -38,7 +38,7 @@
 .card-img{
     width: 100%;
     /* width: 600px; */
-    height: 580px;
+    height: 610px;
     object-fit: fill;
 }
 
@@ -46,27 +46,28 @@
     flex: 1; /* Ocupa el mismo espacio que .lado-izquierdo */
     padding: 30px;
     color: white;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .log-lado-derecho {
     flex: 1; /* Ocupa el mismo espacio que .lado-derecho */
-    padding: 0px;
+    padding: 40px;
     /* background: #f4f4f434; */
     color: white;
     text-align: center;
     /* margin: auto; */
+    /* margin-top: 2%; */
 }
 
 .lado-derecho-img {
     flex: 1; /* Ocupa el mismo espacio que .lado-derecho */
-    padding: 0px;
+    /* padding: 0px; */
     width: 95%;
-    height: 84%;
+    height: 100%;
     background: #f4f4f434;
     border-radius: 22px;
     overflow: hidden; /*Permite que quede dentro del contenedor*/
-    margin-left: 30px;
+    margin-left: 5px;
 }
 /*Fin Lados de carta*/
 
@@ -153,6 +154,19 @@ select:focus {
     color: #ffffff;
 }
 
+input:disabled:not(:placeholder-shown) + label,
+input[readonly]:not(:placeholder-shown) + label {
+    bottom: 30px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+textarea:disabled:not(:placeholder-shown) + label,
+textarea[readonly]:not(:placeholder-shown) + label {
+    bottom: 130px;
+    font-size: 12px;
+    color: #ffffff;
+}
 
 button {
     margin-top: 15px;
@@ -162,6 +176,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 20px;
+    width: 200px;
 }
 
 .log-form-butt{
@@ -171,7 +186,7 @@ button {
     gap: 10%;
 }
 
-.butt-actualizar{
+.butt-carrito{
     background: linear-gradient(to right, rgb(4, 113, 177), rgb(15, 231, 148));
     border: none;
 }
@@ -181,7 +196,7 @@ button {
     border: 1px solid #ffffff;
 }
 
-.butt-actualizar:hover{
+.butt-carrito:hover{
     background: linear-gradient(to right, rgb(8, 11, 53), rgb(52, 40, 156));
 }
 
@@ -223,6 +238,43 @@ button {
         width: 90%;
         height: 1000px;
     }
+
+    /*Lados de carta*/
+    .card-img{
+        width: 100%;
+        /* width: 600px; */
+        height: 610px;
+        object-fit: fill;
+    }
+
+    .log-lado-izquierdo {
+        flex: 1; /* Ocupa el mismo espacio que .lado-izquierdo */
+        padding: 30px;
+        color: white;
+        margin-left: 40px;
+    }
+
+    .log-lado-derecho {
+        flex: 1; /* Ocupa el mismo espacio que .lado-derecho */
+        padding: 40px;
+        /* background: #f4f4f434; */
+        color: white;
+        text-align: center;
+        /* margin: auto; */
+        /* margin-top: 2%; */
+    }
+
+    .lado-derecho-img {
+        flex: 1; /* Ocupa el mismo espacio que .lado-derecho */
+        /* padding: 0px; */
+        width: 95%;
+        height: 99%;
+        background: #f4f4f434;
+        border-radius: 22px;
+        overflow: hidden; /*Permite que quede dentro del contenedor*/
+        margin-left: 5px;
+    }
+    /*Fin Lados de carta*/
 
     form {
         display: flex;

@@ -5,11 +5,11 @@
             <p class="prod-p-ser" *ngIf="perfil.usuario_rol =='viewer' || (perfil.usuario_rol !== 'viewer' && perfil.usuario_rol !== 'admin')">Nuestros Servicios</p>
             <p class="prod-p-ser-admin" *ngIf="perfil.usuario_rol =='admin'">Listado de Servicios</p>
             <div class="cs-servicio" *ngIf="perfil.usuario_rol =='admin'">
-                <button class="bt-register-serv" routerLink="/">Regitrar Servicio</button>
+                <button class="bt-register-serv" [routerLink]="['/detail-producto']">Regitrar Servicio</button>
             </div>
            
             <ul class="producto-list">
-                <div class="comentario-card" *ngFor="let producto of productoService.productos  | paginate: { itemsPerPage: 6, currentPage: page}">
+                <div class="comentario-card" *ngFor="let producto of productos  | paginate: { itemsPerPage: 6, currentPage: page}">
                 <!-- @for (producto of productoService.productos; track producto.id) { -->
                     <li>
                         <app-producto-card [producto]="producto"></app-producto-card>

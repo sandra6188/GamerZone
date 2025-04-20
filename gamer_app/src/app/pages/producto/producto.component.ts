@@ -6,15 +6,17 @@ import { ProductoCardComponent } from '../../components/producto-card/producto-c
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-producto',
-  imports: [HeaderComponent,FooterComponent, ProductoCardComponent, CommonModule, NgxPaginationModule],
+  imports: [HeaderComponent,FooterComponent, ProductoCardComponent, CommonModule, NgxPaginationModule, RouterLink],
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
   auth: any;
+  productos: any[] = [];
 
   perfil = { 
     usuario_rol: '',
@@ -30,5 +32,13 @@ export class ProductoComponent {
       this.perfil.usuario_rol = this.auth?.rol;
 
     }
+
+    // Suscripción a productos$ para actualizaciones en tiempo real
+    this.productoService.productos$.subscribe(data => {
+      this.productos = data;  // Actualiza la lista de productos
+      console.log("Productos actualizados", this.productos);
+    });
+
   }
+  
 }

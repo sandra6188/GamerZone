@@ -1,22 +1,69 @@
 [
     {
-        "contacto_id": 1,
-        "contacto_asunto": "Consulta general",
-        "contacto_nombrecompleto": "María Maria SoulDark",
-        "contacto_email": "maria.souldark@example.com",
-        "contacto_telefono": "2233445566",
-        "contacto_comentario": "Me gustaría recibir más detalles sobre su servicio.",
-        "contacto_fecha": "2025-03-29 09:00:00",
-        "id":5
+      "contacto_id": 1,
+      "contacto_asunto": "Consulta general",
+      "contacto_nombrecompleto": "Juan Pérez",
+      "contacto_email": "admin@example.com",
+      "contacto_telefono": "1234567890",
+      "contacto_comentario": "Estoy interesado en sus servicios, ¿pueden brindarme más información?",
+      "contacto_fecha": "2025-03-29 09:00:00",
+      "user_id": 1,
+      "com_id": ""
     },
     {
-        "contacto_id": 2,
-        "contacto_asunto": "Horario de atención",
-        "contacto_nombrecompleto": "Shadow Slayer",
-        "contacto_email": "shadow.slayer@example.com",
-        "contacto_telefono": "3344556677",
-        "contacto_comentario": "¿Cuáles son los horarios de disponibilidad?",
-        "contacto_fecha": "2025-03-29 11:20:00",
-        "id":6
+      "contacto_id": 2,
+      "contacto_asunto": "Requerimiento especial",
+      "contacto_nombrecompleto": "Laura Martínez",
+      "contacto_email": "laura.martinez@example.com",
+      "contacto_telefono": "5678901234",
+      "contacto_comentario": "¿Tienen disponibilidad para una sesión personalizada?",
+      "contacto_fecha": "2025-03-29 09:30:00",
+      "user_id": 2,
+      "com_id": ""
+    },
+    {
+      "contacto_id": 3,
+      "contacto_asunto": "Soporte técnico",
+      "contacto_nombrecompleto": "Juanito Gamer",
+      "contacto_email": "juanito.gamer@example.com",
+      "contacto_telefono": "0987654321",
+      "contacto_comentario": "Tengo un problema técnico al ingresar, ¿me pueden ayudar?",
+      "contacto_fecha": "2025-03-29 10:00:00",
+      "user_id": 3,
+      "com_id": 1
+    },
+    {
+      "contacto_id": 4,
+      "contacto_asunto": "Solicitud de información",
+      "contacto_nombrecompleto": "Carlos López",
+      "contacto_email": "carlos.lopez@example.com",
+      "contacto_telefono": "1122334455",
+      "contacto_comentario": "¿Dónde puedo consultar los precios y promociones?",
+      "contacto_fecha": "2025-03-29 10:30:00",
+      "user_id": 4,
+      "com_id": 2
+    },
+    {
+      "contacto_id": 5,
+      "contacto_asunto": "Consulta general",
+      "contacto_nombrecompleto": "María Maria SoulDark",
+      "contacto_email": "maria.souldark@example.com",
+      "contacto_telefono": "2233445566",
+      "contacto_comentario": "Me gustaría recibir más detalles sobre su servicio.",
+      "contacto_fecha": "2025-03-29 11:00:00",
+      "user_id": 5,
+      "com_id": 3
+    },
+    {
+      "contacto_id": 6,
+      "contacto_asunto": "Horario de atención",
+      "contacto_nombrecompleto": "Shadow Slayer",
+      "contacto_email": "shadow.slayer@example.com",
+      "contacto_telefono": "3344556677",
+      "contacto_comentario": "¿Cuáles son los horarios de disponibilidad?",
+      "contacto_fecha": "2025-03-29 11:20:00",
+      "user_id": 6,
+      "com_id": 6
     }
-]
+  ]
+  

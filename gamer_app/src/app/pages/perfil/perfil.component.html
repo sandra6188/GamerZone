@@ -46,7 +46,7 @@
                     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
                     <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
                     <div class="log-form-butt">
-                        <button type="submit" class="butt-actualizar">Actualizar</button>
+                        <button type="submit" class="butt-actualizar" (click)="actualizarPerfil()">Actualizar</button>
                         <button type="submit" class="butt-regresar" routerLink="/productos">Regresar</button>
                     </div>
                 </form>
@@ -54,11 +54,11 @@
            
             <div class="log-lado-derecho">
                 <div class="butt-foto">
-                    <button type="submit" class="butt-subirfoto">Subir Imagen</button>
+                    <input type="file" accept="image/*" (change)="onImageSelected($event)" hidden #fileInput>
+                    <button type="button" class="butt-subirfoto" (click)="fileInput.click()">Subir Imagen</button>
                 </div>
                 <div class="lado-derecho-img">
-                   
-                    <img src="assets/img/user.jpg" alt="Juego" class="card-img">
+                    <img [src]="previewImage || 'assets/img/user.jpg'" alt="Imagen de usuario" class="card-img">
                 </div>
             </div>
         </div>

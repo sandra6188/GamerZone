@@ -1,3 +1,38 @@
 <app-header></app-header> 
-<p>sobrenosotros works!</p>
+    <br>
+    <section class="card-log">
+        <div class="log-total">
+            <div class="log-lado-derecho">
+                <div class="butt-foto">
+                    <input #inputImagen type="file" accept="image/*" style="display: none" (change)="onImagenSeleccionada($event)" />
+                    <button type="button" class="butt-subirfoto" (click)="abrirSelectorImagen()">Subir Imagen</button>
+                </div>
+                <div class="lado-derecho-img">
+                    <img [src]="imagenSeleccionada || 'assets/home/nosotros.jpg'" alt="Imagen actual" class="card-img">
+                </div>
+            </div>
+           
+            <div class="log-lado-izquierdo">
+                
+                <h3 class="h3-title-log" >Sobre Nosotros</h3>
+                <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+                <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+                   
+                <form class="log-lado-izquierdo" (submit)="redirectToLogin()">
+                    
+                    <div class="log-form-group">
+                        <textarea [(ngModel)]="descripcion" class="class-com-input"  name="sobnos_descripcion" rows="20" cols="70" placeholder="Actualiza el contenido de la pagina aquí..." required></textarea>
+                        <label for="usuario_nombrecompleto">Descripcion</label>
+                    </div>
+                    <div class="log-form-butt">
+                        <button type="submit" class="butt-actualizar">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+ 
+    <br>
 <app-footer></app-footer>
+
+

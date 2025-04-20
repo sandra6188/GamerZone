@@ -27,7 +27,7 @@ export class ContactoComponent {
     contacto_telefono: '',
     contacto_comentario: '',
     contacto_fecha: new Date(),
-    id: 0
+    user_id: 0
   };
 
   errorMessage: string = '';
@@ -68,6 +68,8 @@ export class ContactoComponent {
           this.errorMessage = 'Todos los campos son obligatorios.';
           return;
 
+        }else{
+          this.errorMessage = '';
         }
 
         //Accede a usuario logueado
@@ -88,7 +90,7 @@ export class ContactoComponent {
           contacto_telefono: this.nuevoContacto.contacto_telefono,
           contacto_comentario: this.nuevoContacto.contacto_comentario,
           contacto_fecha: this.nuevoContacto.contacto_fecha,
-          id: this.auth_contact?.id,
+          user_id: this.auth_contact?.id,
         };
 
         console.log("Nuevo comentario", this.nuevoContacto);
@@ -105,7 +107,7 @@ export class ContactoComponent {
           contacto_telefono: this.nuevoContacto.contacto_telefono,
           contacto_comentario: '',
           contacto_fecha: new Date(),
-          id: 0,
+          user_id: 0,
         }; // Limpiar formulario
 
         //Ocultar el mensaje después de unos segundos (opcional)

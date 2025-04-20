@@ -92,31 +92,139 @@ export class ComentarioService {
     ]
   }*/
 
-  private jsonUrl = 'assets/json/comentarios.json';
-  private comentariosSubject = new BehaviorSubject<any[]>([]);
-  comentarios$ = this.comentariosSubject.asObservable();
+  private storageKey = 'comentarios';
+  private deletedKey = 'comentariosEliminados';
+  public comentarios$: BehaviorSubject<Comentario[]> = new BehaviorSubject<Comentario[]>([]);
+  public comentariosJson: Comentario[] = []; // Comentarios desde el JSON
 
-  constructor(private http: HttpClient) {
-    this.listarComentarios();
+ 
+  constructor(private http: HttpClient) { 
+    this.loadComentariosFromJson();
+    this.loadStoredComentarios();
   }
 
-  // Obtener comentarios (desde JSON o API)
-  listarComentarios() {
-    this.http.get<any[]>(this.jsonUrl).subscribe(comentarios => {
-      this.comentariosSubject.next(comentarios);
+  // Cargar comentarios desde JSON (sin guardarlos en localStorage)
+  private loadComentariosFromJson() {
+    this.http.get<Comentario[]>('assets/json/comentarios.json').subscribe((jsonComentarios) => {
+      this.comentariosJson = jsonComentarios; // Guardar los del JSON en una variable
+      this.updateCommentList(); // Actualizar la lista con JSON + LocalStorage
     });
   }
 
-  // Agregar comentario
-  agregarComentario(comentario: any) {
-    const comentariosActuales = this.comentariosSubject.getValue();
-    const nuevosComentarios = [comentario, ...comentariosActuales];
-
-    this.comentariosSubject.next(nuevosComentarios);
-    // Aquí normalmente harías un HTTP POST a tu API si fuera un backend real
+  // Cargar comentarios desde localStorage
+  loadStoredComentarios() {
+    this.updateCommentList();
+    // localStorage.removeItem(this.storageKey); // Eliminar comentarios guardados
+    // localStorage.removeItem(this.deletedKey); // Eliminar el localStorage de los escondidos eliminados
   }
 
-  //Para traerme la fecha y hora actual
+  // Obtener comentarios desde localStorage
+  getStoredComentarios(): Comentario[] {
+    const stored = localStorage.getItem(this.storageKey);
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  // Guardar comentarios en localStorage
+  private saveToStorage(comentarios: Comentario[]) {
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(comentarios));
+      this.updateCommentList();
+    } catch (e) {
+      if (e instanceof DOMException && e.name === 'QuotaExceededError') {
+        alert('El límite de almacenamiento fue superado. Limpiando datos guardados.');
+        localStorage.removeItem(this.storageKey);
+        this.updateCommentList();
+      } else {
+        throw e; // Re-lanza si es otro tipo de error
+      }
+    }
+  }
+
+  // Agregar un nuevo comentario solo en localStorage
+  agregarComentario(comentario: Comentario) {
+    const comentarios = this.getStoredComentarios();
+    comentarios.push(comentario);
+    this.saveToStorage(comentarios);
+  }
+
+  // Actualizar un comentario
+  actualizarComentario(comentarioActualizado: Comentario) {
+    const comentarios = this.getStoredComentarios();
+    const index = comentarios.findIndex(c => c.id === comentarioActualizado.id);
+
+    if (index !== -1) {
+      comentarios[index] = comentarioActualizado;
+    } else {
+      comentarios.push(comentarioActualizado); // <--- Esto es lo nuevo: si viene del JSON, lo guardas por primera vez
+    }
+  
+    this.saveToStorage(comentarios);
+  }
+
+  // Eliminar y esconde los del json para que no los saque
+  eliminarComentario(id: string): void {
+
+    const idNumerico = Number(id);
+
+    const comentarios = this.getStoredComentarios();
+    const nuevosComentarios = comentarios.filter(c =>  Number(c.id) !==  idNumerico);
+    this.saveToStorage(nuevosComentarios);
+  
+    // Guardar ID del comentario eliminado del JSON (si aplica)
+    const idsEliminados = this.getDeletedIds();
+    if (!idsEliminados.includes(idNumerico)) {
+      idsEliminados.push(idNumerico);
+      localStorage.setItem(this.deletedKey, JSON.stringify(idsEliminados));
+    }
+  
+    this.updateCommentList();
+  }
+
+  getDeletedIds(): number[] {
+    const eliminados = localStorage.getItem(this.deletedKey);
+    return eliminados ? JSON.parse(eliminados) : [];
+  }
+
+  /*restaurarComentariosEliminados(): void {
+    localStorage.removeItem(this.deletedKey);
+    this.updateCommentList();
+  */
+
+  updateCommentList() {
+    
+    const storedComments = this.getStoredComentarios();
+    const eliminados = this.getDeletedIds();
+  
+    // Obtener los IDs de comentarios que ya están en localStorage
+    const idsEnStorage = storedComments.map(c => Number(c.id));
+  
+    // Filtrar comentarios del JSON: que no estén eliminados y no estén ya en localStorage
+    const comentariosFiltrados = this.comentariosJson.filter(c => 
+      !eliminados.includes(Number(c.id)) && !idsEnStorage.includes(Number(c.id))
+    );
+  
+    // Combinar comentarios del JSON filtrado + los que están en localStorage
+    const combinedComments = [...storedComments, ...comentariosFiltrados]; // se  coloco al reves para que salgan primero los que el usuario viewer 
+
+    // Ordenar por ID de menor a mayor
+    //combinedComments.sort((a, b) => Number(a.id) - Number(b.id));
+
+    this.comentarios$.next(combinedComments);
+  }
+
+  getTotalDatos(): number {
+    const eliminados = this.getDeletedIds();
+    // Filtra los comentarios JSON que no han sido eliminados
+    const comentariosJsonValidos = this.comentariosJson.filter(c => !eliminados.includes(Number(c.id)));
+    // Toma los comentarios guardados en localStorage
+    const comentariosLocal = this.getStoredComentarios();
+    // Calcula total
+    const total = comentariosJsonValidos.length + comentariosLocal.length;
+    // Puedes devolver total, o total + 1 si es para generar el siguiente ID
+    return total + 1;
+  }
+
+  //Para traer la fecha y hora actual
   getFormattedDateTime = (): string => {
     const now = new Date();
     const year = now.getFullYear();

@@ -1,3 +1,34 @@
-<app-header></app-header> 
-<p>usuario works!</p>
+<app-header></app-header>
+    <br>
+    <div class="card">
+    <section class="users-container">
+        <div class="users-grid">
+            <form (submit)="redirectToLogin()">
+                <p class="title-p-user-admin" *ngIf="auth == 'admin'">Listar Usuarios</p>
+                <div class="cs-usuario" *ngIf="auth == 'admin'">
+                    <button class="bt-register-user" [routerLink]="['/detail-usuario']">Registrar Usuario</button>
+                </div>
+            </form>
+
+            <div class="user-card" *ngFor="let usuario of users | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+                <img [src]="usuario.imagen || 'assets/img/user.jpg'" alt="Avatar de {{usuario.nombre}} {{usuario.apellidos}}" class="avatar" />
+                <div class="user-content">
+                    <h3 class="username">{{ usuario.nombre }} {{ usuario.apellidos }}</h3>
+                    </div>
+
+                    <div class="div-buttons" *ngIf="auth == 'admin'">
+                    <button class="bt-user-card-edit" [routerLink]="['/detail-usuario', usuario.id]">Actualizar</button>
+                    <button class="bt-user-card-delete" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+                </div>
+            </div>
+
+            <br />
+            <!-- Controles de paginación -->
+            <div class="class-pagination">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+    </section>
+    </div>
+    <br />
 <app-footer></app-footer>

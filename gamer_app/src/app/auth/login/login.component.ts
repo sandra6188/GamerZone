@@ -26,8 +26,11 @@ export class LoginComponent {
     }
 
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/sobrenosotros']); // Redirige después del login
-      console.log("Hola dentro");
+      if(this.authService.isAuthenticated() && ['viewer'].includes(this.authService.getRole())){
+        this.router.navigate(['/']); 
+      }else if(this.authService.isAuthenticated() && ['admin'].includes(this.authService.getRole())){
+        this.router.navigate(['/sobrenosotros']); 
+      }
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
     }

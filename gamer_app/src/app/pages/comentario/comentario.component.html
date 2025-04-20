@@ -16,15 +16,15 @@
                 </form>
                 
                 <div class="comentario-card" *ngFor="let comentario of comentarios  | paginate: { itemsPerPage: itemsPerPage, currentPage: page}">
-                    <img [src]="comentario.com_avatar" alt="Avatar de {{comentario.com_username}}" class="avatar">
+                    <img [src]="comentario.imagen" alt="Avatar de {{comentario.com_username}}" class="avatar">
                     <div class="comentario-content">
                         <h3 class="username">{{ comentario.com_username }}</h3>
                         <p class="descripcion">{{ comentario.com_descripcion }}</p>
                         <span class="fecha">{{ comentario.com_fecha | date:'yyyy-MM-dd HH:mm:ss' }}</span>
                     </div>
                     <div class="div-buttons" *ngIf="auth =='admin'">
-                        <button class="bt-prod-card-edit" routerLink="/">Actualizar</button>
-                        <button class="bt-prod-card-delete"  routerLink="/">Eliminar</button>
+                        <button class="bt-prod-card-edit" [routerLink]="['/detail-comentario', comentario.id]">Actualizar</button>
+                        <button class="bt-prod-card-delete" (click)="eliminarComentario(comentario.id)">Eliminar</button>
                     </div>
                 </div>
                 <br>

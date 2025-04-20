@@ -14,60 +14,114 @@ export class ContactoService {
     this.contactos = [];
   }*/
   private storageKey = 'contactos';
+  private deletedKey = 'contactosEliminados';
   public contactos$: BehaviorSubject<Contacto[]> = new BehaviorSubject<Contacto[]>([]);
-  public contactosJson: Contacto[] = []; // Contactos desde el JSON
+  public contactosJson: Contacto[] = [];
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.loadContactosFromJson();
     this.loadStoredContacts();
   }
 
-  // Cargar contactos desde JSON (sin guardarlos en localStorage)
   private loadContactosFromJson() {
     this.http.get<Contacto[]>('assets/json/contactos.json').subscribe((jsonContactos) => {
-      this.contactosJson = jsonContactos; // Guardar los del JSON en una variable
-      this.updateContactList(); // Actualizar la lista con JSON + LocalStorage
+      this.contactosJson = jsonContactos;
+      this.updateContactList();
     });
   }
 
-  // Cargar contactos desde localStorage
   loadStoredContacts() {
     this.updateContactList();
-    localStorage.removeItem(this.storageKey); // Eliminar contactos guardados
+    // localStorage.removeItem(this.storageKey); // Eliminar comentarios guardados
+    // localStorage.removeItem(this.deletedKey); // Eliminar el localStorage de los escondidos eliminados
   }
 
-  // Obtener contactos desde localStorage
   getStoredContacts(): Contacto[] {
     const stored = localStorage.getItem(this.storageKey);
     return stored ? JSON.parse(stored) : [];
   }
 
-  // Agregar un nuevo contacto solo en localStorage
+  private saveToStorage(contactos: Contacto[]) {
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(contactos));
+      this.updateContactList();
+    } catch (e) {
+      if (e instanceof DOMException && e.name === 'QuotaExceededError') {
+        alert('El límite de almacenamiento fue superado. Limpiando datos guardados.');
+        localStorage.removeItem(this.storageKey);
+        this.updateContactList();
+      } else {
+        throw e;
+      }
+    }
+  }
+
   agregarContacto(contacto: Contacto) {
     const contactos = this.getStoredContacts();
     contactos.push(contacto);
-    localStorage.setItem(this.storageKey, JSON.stringify(contactos));
+    this.saveToStorage(contactos);
+  }
+
+  actualizarContacto(contactoActualizado: Contacto) {
+    const contactos = this.getStoredContacts();
+    const index = contactos.findIndex(c => c.contacto_id === contactoActualizado.contacto_id);
+
+    if (index !== -1) {
+      contactos[index] = contactoActualizado;
+    } else {
+      contactos.push(contactoActualizado);
+    }
+
+    this.saveToStorage(contactos);
+  }
+
+  eliminarContacto(id: number): void {
+    const contactos = this.getStoredContacts();
+    const nuevosContactos = contactos.filter(c => c.contacto_id !== id);
+    this.saveToStorage(nuevosContactos);
+
+    const idsEliminados = this.getDeletedIds();
+    if (!idsEliminados.includes(id)) {
+      idsEliminados.push(id);
+      localStorage.setItem(this.deletedKey, JSON.stringify(idsEliminados));
+    }
+
     this.updateContactList();
   }
 
-  // Actualizar la lista combinando los contactos del JSON y localStorage
+  getDeletedIds(): number[] {
+    const eliminados = localStorage.getItem(this.deletedKey);
+    return eliminados ? JSON.parse(eliminados) : [];
+  }
+
+  restaurarContactosEliminados(): void {
+    localStorage.removeItem(this.deletedKey);
+    this.updateContactList();
+  }
+
   updateContactList() {
     const storedContacts = this.getStoredContacts();
-    const combinedContacts = [...this.contactosJson, ...storedContacts];
+    const eliminados = this.getDeletedIds();
+    const idsEnStorage = storedContacts.map(c => c.contacto_id);
+
+    const contactosFiltrados = this.contactosJson.filter(c =>
+      !eliminados.includes(c.contacto_id) && !idsEnStorage.includes(c.contacto_id)
+    );
+
+    const combinedContacts = [...contactosFiltrados, ...storedContacts];
+    combinedContacts.sort((a, b) => a.contacto_id - b.contacto_id);
+
     this.contactos$.next(combinedContacts);
 
-    console.log("Contactos cargados en Json y LocalStorage", combinedContacts);
   }
 
-  //Saca el total de datos entre Json y Localstorage
-  getTotalDatos(){
-    // console.log("Contactos cargados en Json", this.contactosJson.length);
-    // console.log("Contactos cargados en LocalStorage", this.getStoredContacts().length);
-    var id_maximo = (this.contactosJson.length + this.getStoredContacts().length) + 1;
-    return id_maximo;   
+  getTotalDatos(): number {
+    const eliminados = this.getDeletedIds();
+    const contactosJsonValidos = this.contactosJson.filter(c => !eliminados.includes(c.contacto_id));
+    const contactosLocal = this.getStoredContacts();
+    return contactosJsonValidos.length + contactosLocal.length + 1;
   }
 
-  //Para traerme la fecha y hora actual
   getFormattedDateTime = (): string => {
     const now = new Date();
     const year = now.getFullYear();
@@ -76,7 +130,7 @@ export class ContactoService {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-  
+
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   };
 

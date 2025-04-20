@@ -6,5 +6,5 @@ export default interface Contacto{
     contacto_telefono: string,
     contacto_comentario: string,
     contacto_fecha: Date,
-    id: number
+    user_id: number
 }

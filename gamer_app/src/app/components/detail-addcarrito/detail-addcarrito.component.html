@@ -3,10 +3,10 @@
     <section class="card-log">
         <div class="log-total">
             <div class="log-lado-derecho">
-                <div class="butt-foto">
+                <!-- <div class="butt-foto">
                     <input type="file" #inputImagen (change)="onImagenSeleccionada($event)" accept="image/*" hidden>
                     <button type="button" class="butt-subirfoto" (click)="abrirInputImagen()">Subir Imagen</button>
-                </div>
+                </div> -->
                 <div class="lado-derecho-img">
                     <img [src]="imagenPreview || 'assets/img/sin_img.png'" alt="Vista previa" class="card-img" />
                 </div>
@@ -16,34 +16,25 @@
                     <h3 class="h3-title-log" >{{producto.titulo}}</h3>
                     <br>
                     <div class="log-form-group">
-                        <input type="text" [(ngModel)]="producto.titulo"  name="producto_titulo" required>
-                        <label for="usuario_nombrecompleto">Nombre</label>
+                        <input type="text" [(ngModel)]="producto.titulo"  name="producto_titulo" [disabled]="true" required>
+                        <label for="usuario_nombrecompleto">Titulo</label>
                     </div>
 
                     <div class="log-form-group">
-                        <textarea [(ngModel)]="producto.descripcion" class="class-com-input"  name="producto_descripcion" rows="6"  placeholder="Descripción del juego ..." required></textarea>
+                        <textarea [(ngModel)]="producto.descripcion" class="class-com-input"  name="producto_descripcion" rows="6" [disabled]="true" placeholder="Descripción del juego ..." required></textarea>
                         <label for="producto_descripcion">Descripcion</label>
                     </div>
             
                     <div class="log-form-group">
-                        <select  name="producto_genero" [(ngModel)]="producto.genero" required>
-                            <option value=" ">-- Selecciona un género --</option>
-                            <option value="Aventura">Aventura</option>
-                            <option value="Accion">Acción</option>
-                            <option value="Estrategia">Estrategia</option>
-                            <option value="Deportes">Deportes</option>
-                            <option value="Simulacion">Simulación</option>
-                            <option value="RPG">RPG</option>
-                            <option value="Puzzle">Puzzle</option>
-                            <option value="Terror">Terror</option>
-                          </select>
+                        <input type="text" [(ngModel)]="producto.genero"  name="producto_genero" [disabled]="true" required>
                         <label for="producto_genero">Genero</label>
                     </div>
             
                     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
                     <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
                     <div class="log-form-butt">
-                        <button type="submit" class="butt-actualizar"> {{ producto.id ? 'Actualizar' : 'Registrar' }}</button>
+                        
+                        <button type="submit" class="butt-carrito">Añadir a Carrito</button>
                         <button type="submit" class="butt-regresar" routerLink="/productos">Regresar</button>
                     </div>
                 </form>

@@ -20,6 +20,8 @@ export class RegisterComponent {
   usuario_celular: string = '';
   usuario_password: string = '';
   usuario_repeat_password: string = '';
+  usuario_imagen: string = '';
+
   errorMessage: string = '';
   successMessage: string = '';
 
@@ -60,7 +62,8 @@ export class RegisterComponent {
       this.usuario_email,
       this.usuario_celular,
       this.usuario_password,
-      this.usuario_repeat_password
+      this.usuario_repeat_password,
+      this.usuario_imagen = 'assets/img/user.jpg'
     ).subscribe({
       next: () => {
         this.successMessage = 'Registro exitoso. Redirigiendo al login...';
