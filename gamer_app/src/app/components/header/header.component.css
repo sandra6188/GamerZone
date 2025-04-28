@@ -128,4 +128,15 @@
     font-weight: bold;
 }
 
+.carrito-notificacion {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0 5px;
+    font-size: 15px;
+  }
+
 /*Fin Css de dropdown*/

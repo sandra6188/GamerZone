@@ -1,0 +1,193 @@
+.card {
+    width: 97%;
+    height: 952px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, rgb(74, 10, 158), rgb(0, 0, 0));
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.comentarios-container {
+    width: 88%;
+    /* margin: auto; */
+}
+
+.title-p-com {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+}
+
+.class-com-input{
+    border-radius: 10px;
+    border: none;
+    /* padding: 12px;  */ /*daña la parte del responsive */
+    font-size: 15px;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #00ffd5;
+    box-shadow: 0 0 10px rgba(0, 250, 187, 0.8);
+    outline: none;
+}
+
+/* Boton Enviar */
+/* .class-btn-comentario{
+    text-align: center;
+} */
+
+.button-comentario{
+    border-radius: 4px;
+    background: linear-gradient(to right, rgb(26, 2, 83), rgb(30, 139, 153));
+    color: white;
+    font-size: 19px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 12px;
+    border: none;
+}
+
+/* Fin Boton Enviar */
+
+.comentarios-grid {
+    /* display: grid; */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 5%;
+    max-width: 100%;
+}
+
+.comentario-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.comentario-card:hover {
+    transform: scale(1.05);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comentario-content {
+    text-align: left;
+    flex: 1;
+}
+
+.username {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.descripcion {
+    font-size: 1em;
+    color: #333;
+    margin: 5px 0;
+}
+
+.fecha {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.title-p-com-admin {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+}
+
+.bt-prod-card-edit {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+    background: linear-gradient(to right, rgb(6, 79, 148), rgb(17, 148, 28));
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    margin-bottom: 9px;
+    margin-right: 9px;
+  
+  }
+  
+  .bt-prod-card-edit:hover,
+  .bt-prod-card-edit:focus {
+    box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+    transform: translateY(-0.45em);
+  }
+  
+  
+  
+  .bt-prod-card-delete {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+    background: linear-gradient(to right, rgb(148, 6, 6), rgb(148, 96, 17));
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    margin-bottom: 9px;
+    margin-right: 9px;
+   
+  }
+  
+  .bt-prod-card-delete:hover,
+  .bt-prod-card-delete:focus {
+    box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+    transform: translateY(-0.45em);
+  }
+
+/* Paginación */
+.class-pagination{
+    border-radius: 10px;
+    background: linear-gradient(to right, rgb(210, 191, 255), rgb(30, 139, 153));
+    max-width: 100%;
+    text-align: center;
+    /* margin-top:  95px; */
+}
+
+/* Medias para manejar responsive XD */
+@media (max-width: 1268px) {
+    .class-com-input {
+        border-radius: 10px;
+        border: none;
+        padding: 12px;
+        font-size: 15px;
+        max-width: 97%;
+        resize: none;
+        outline: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .class-com-input {
+        border-radius: 10px;
+        border: none;
+        padding: 12px;
+        font-size: 15px;
+        max-width: 95%;
+        resize: none;
+        outline: none;
+    }
+}

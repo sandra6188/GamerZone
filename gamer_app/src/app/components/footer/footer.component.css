@@ -4,14 +4,47 @@
     bottom: 0;        /* Lo posiciona en la parte inferior */
     left: 0;
     width: 100%;      /* Ocupa todo el ancho de la pantalla */
- 
-    .sec-footer {
-        display: flex;
-        justify-content: space-around;
-        color: white;
-        text-align: center;
-        padding-bottom: 60px;
-    }
-    
-  }
- 
+}
+
+.sec-footer {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-right: 20px;
+}
+
+.sec-social {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    text-align: center;
+    padding-bottom: 8px;
+    margin-left: 20px;
+}
+
+/* Estilos para los íconos de redes sociales */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.social-icons a {
+    margin: 0 15px;
+    font-size: 30px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ff476f; /* Cambiar el color al pasar el mouse */
+}
+
+/* Estilos de los íconos de redes sociales */
+.social-icon i {
+    font-size: 40px; /* Tamaño del ícono */
+}

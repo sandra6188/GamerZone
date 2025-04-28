@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
 import { AuthService } from '../../services/auth/auth.service';
 import Producto from '../../models/Producto';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-detail-addcarrito',
@@ -31,7 +32,7 @@ export class DetailAddcarritoComponent {
   // nuevaImagenBase64: string | null = null;
 
   
-  constructor(public router: Router, private authService: AuthService, private  route: ActivatedRoute, private productoService: ProductoService){}
+  constructor(public router: Router, private authService: AuthService, private  route: ActivatedRoute, private productoService: ProductoService, private  carritoService: CarritoService){}
 
 
   ngOnInit(): void {
@@ -69,7 +70,7 @@ export class DetailAddcarritoComponent {
   redirectToLogin(){
     if(this.authService.isAuthenticated()){
       if(['viewer'].includes(this.authService.getRole())){
-
+        this.agregarAlCarrito();
       }/*else if(['admin'].includes(this.authService.getRole())){
         if (this.producto.id && this.producto.id !== 0) {
           this.actualizarProducto();
@@ -80,6 +81,13 @@ export class DetailAddcarritoComponent {
     }else{
       console.log("Usuario No Autenticado",this.authService.isAuthenticated());
     }
+  }
+
+  // Función para agregar el producto al carrito
+  agregarAlCarrito() {
+    this.carritoService.agregarAlCarrito(this.producto);
+    this.successMessage = 'Producto añadido al carrito';
+    this.errorMessage = '';
   }
 
   /*actualizarProducto(): void {

@@ -13,7 +13,7 @@
             <div class="class-div" *ngIf="user.rol =='admin'">
                 <button class="but-list-2"><a routerLink="/sobrenosotros" class="link">Sobre Nosotros</a></button>
                 <button class="but-list-2"><a routerLink="/productos" class="link">Servicios</a></button>
-                <button class="but-list-2"><a routerLink="/comentarios" class="link">Reseñas</a></button>
+                <button class="but-list-2"><a routerLink="/list-comentarios" class="link">Reseñas</a></button>
                 <button class="but-list-2"><a routerLink="/usuario" class="link">Contactos / Usuarios</a></button>
             </div>
         </section>
@@ -23,7 +23,7 @@
                     <button class="dropdown-btn">{{ user.username }} ⌵</button>
                     <div class="dropdown-content">
                         <a routerLink="/perfil">Mi perfil</a>
-                        <a href="#">Mi carrito</a>
+                        <a routerLink="/sobrenosotros">Mi carrito</a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="logout" *ngIf="user" (click)="logout()">Cerrar sesión</a>
                     </div>
@@ -31,7 +31,11 @@
             </div>
             <div class="class-div" *ngIf="user.rol == 'viewer'">
                 <div class="dropdown">
-                    <button class="dropdown-btn">{{ user.username }}  <!--{{ user.rol }} -->⌵</button>
+                    <button class="dropdown-btn">{{ user.username }}  <!--{{ user.rol }} -->⌵
+                        <span *ngIf="cantidadCarrito > 0" class="carrito-notificacion">
+                            {{ cantidadCarrito }}
+                        </span>
+                    </button>
                     <div class="dropdown-content">
                         <a routerLink="/perfil">Mi perfil</a>
                         <a href="#">Mi carrito</a>

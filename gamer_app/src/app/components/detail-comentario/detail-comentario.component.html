@@ -52,7 +52,7 @@
                     <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
                     <div class="log-form-butt">
                         <button type="submit" class="butt-actualizar"> {{ comentario.id ? 'Actualizar' : 'Registrar' }}</button>
-                        <button type="button" *ngIf="auth =='admin'" class="butt-regresar" (click)="regresarListar()" >Regresar</button>
+                        <button type="submit" class="butt-regresar" routerLink="/list-comentarios">Regresar</button>
                     </div>
                 </form>
             </div>

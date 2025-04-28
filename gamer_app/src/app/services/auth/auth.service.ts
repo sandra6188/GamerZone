@@ -111,7 +111,13 @@ export class AuthService {
     }
   
     this.saveUsersToLocalStorage(users);
-    localStorage.setItem(this.currentUserKey, JSON.stringify(usuarioActualizado)); // <-- ACTUALIZA currentUser
+  
+    // Solo actualizar el currentUser si el usuario actualizado es el que está logueado
+    const currentUser = this.getCurrentUser();
+    if (currentUser && currentUser.id === usuarioActualizado.id) {
+      localStorage.setItem(this.currentUserKey, JSON.stringify(usuarioActualizado));
+    }
+  
     this.updateUserList();
   }
 

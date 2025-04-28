@@ -12,22 +12,66 @@ import { DetailProductoComponent } from './components/detail-producto/detail-pro
 import { DetailComentarioComponent } from './components/detail-comentario/detail-comentario.component';
 import { DetailUsuarioComponent } from './components/detail-usuario/detail-usuario.component';
 import { DetailAddcarritoComponent } from './components/detail-addcarrito/detail-addcarrito.component';
+import { ListComentariosComponent } from './pages/list-comentarios/list-comentarios.component';
+import { AuthSinChildGuard } from './guards/auth-sin-child.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/auth-role.guard';
 
 export const routes: Routes = [
     {path: '', component:HomeComponent},
-    {path: 'productos', component:ProductoComponent},
-    {path: 'comentarios', component:ComentarioComponent},
+    {
+        path: 'productos',
+        component: ProductoComponent,
+        canActivateChild: [AuthGuard], // Protege la ruta principal
+        children: [
+          { path: 'detail-producto', component: DetailProductoComponent },
+          { path: 'detail-producto/:id', component: DetailProductoComponent }
+        ],
+    },
+    {path: 'comentarios', component:ComentarioComponent, canActivate: [AuthSinChildGuard]},
+    {
+        path: 'list-comentarios',
+        component: ListComentariosComponent,
+        canActivate: [AuthSinChildGuard, RoleGuard],
+        canActivateChild: [AuthGuard], // Protege la ruta principal
+        children: [
+            {path: 'detail-comentario', component: DetailComentarioComponent},   
+            {path: 'detail-comentario/:id', component:DetailComentarioComponent},
+        ],
+    },
     {path: 'contactos', component:ContactoComponent},
     {path: 'register', component:RegisterComponent},
     {path: 'login', component:LoginComponent},
-    {path: 'perfil', component:PerfilComponent},
-    {path: 'sobrenosotros', component:SobrenosotrosComponent},
-    {path: 'usuario', component:UsuarioComponent},
-    {path: 'detail-producto', component: DetailProductoComponent },   
-    {path: 'detail-producto/:id', component:DetailProductoComponent},
-    {path: 'detail-comentario', component: DetailComentarioComponent },   
-    {path: 'detail-comentario/:id', component:DetailComentarioComponent},
-    {path: 'detail-usuario', component: DetailUsuarioComponent },   
-    {path: 'detail-usuario/:id', component:DetailUsuarioComponent},
-    {path: 'detail-addcarrito/:id', component:DetailAddcarritoComponent}
+    {path: 'perfil', component:PerfilComponent, canActivate: [AuthSinChildGuard]},
+    {path: 'sobrenosotros', component:SobrenosotrosComponent, canActivate: [AuthSinChildGuard, RoleGuard]},
+    {
+        path: 'usuario',
+        component: UsuarioComponent,
+        canActivate: [AuthSinChildGuard, RoleGuard],
+        canActivateChild: [AuthGuard], // Protege la ruta principal
+        children: [
+            {path: 'detail-usuario', component: DetailUsuarioComponent},   
+            {path: 'detail-usuario/:id', component:DetailUsuarioComponent},
+        ],
+    },
+    {path: 'detail-addcarrito/:id', component:DetailAddcarritoComponent, canActivate: [AuthSinChildGuard]}
+   
+  
+
+    // {path: 'productos', component:ProductoComponent},
+    // {path: 'comentarios', component:ComentarioComponent},
+    // {path: 'list-comentarios', component:ListComentariosComponent, canActivate: [AuthSinChildGuard]},
+    // {path: 'contactos', component:ContactoComponent},
+    // {path: 'register', component:RegisterComponent},
+    // {path: 'login', component:LoginComponent},
+    // {path: 'perfil', component:PerfilComponent, canActivate: [AuthSinChildGuard]},
+    // {path: 'sobrenosotros', component:SobrenosotrosComponent, canActivate: [AuthSinChildGuard]},
+    // {path: 'usuario', component:UsuarioComponent, canActivate: [AuthSinChildGuard]},
+    // {path: 'detail-producto', component: DetailProductoComponent, canActivateChild: [AuthGuard]},   
+    // {path: 'detail-producto/:id', component:DetailProductoComponent, canActivateChild: [AuthGuard]},
+    // {path: 'detail-comentario', component: DetailComentarioComponent, canActivateChild: [AuthGuard]},   
+    // {path: 'detail-comentario/:id', component:DetailComentarioComponent, canActivateChild: [AuthGuard]},
+    // {path: 'detail-usuario', component: DetailUsuarioComponent, canActivateChild: [AuthGuard]},   
+    // {path: 'detail-usuario/:id', component:DetailUsuarioComponent, canActivateChild: [AuthGuard]},
+    // {path: 'detail-addcarrito/:id', component:DetailAddcarritoComponent, canActivateChild: [AuthGuard]}
 ];

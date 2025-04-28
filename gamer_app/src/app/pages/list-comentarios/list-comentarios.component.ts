@@ -1,22 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { ComentarioService } from '../../services/comentario.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ComentarioService } from '../../services/comentario.service';
 import { AuthService } from '../../services/auth/auth.service';
-import Comentario from '../../models/Comentario';
 
 @Component({
-  selector: 'app-comentario',
-  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, NgxPaginationModule],
-  templateUrl: './comentario.component.html',
-  styleUrl: './comentario.component.css'
+  selector: 'app-list-comentarios',
+  imports: [HeaderComponent, FooterComponent, CommonModule, FormsModule, NgxPaginationModule, RouterLink],
+  templateUrl: './list-comentarios.component.html',
+  styleUrl: './list-comentarios.component.css'
 })
-export class ComentarioComponent {
-
+export class ListComentariosComponent {
   auth: any;
   page: number = 1;
   itemsPerPage: any;
@@ -37,8 +35,8 @@ export class ComentarioComponent {
 
     //Accede a usuario logueado
     this.auth = this.authService.getRole();
-    this.itemsPerPage = 3;
-    
+    this.itemsPerPage = 5;
+   
 
     // Suscribirse al BehaviorSubject de usuarios
     this.authService.users$.subscribe(users => {
@@ -64,7 +62,7 @@ export class ComentarioComponent {
 
     if(this.authService.isAuthenticated()){
 
-      if(['viewer'].includes(this.authService.getRole())){
+      if(['admin'].includes(this.authService.getRole())){
         this.comentarioService.comentarios$.subscribe(data => {
           this.comentarios = data;
           console.log("Comentarios Json ",this.comentarios);
@@ -78,53 +76,18 @@ export class ComentarioComponent {
     
   }
 
-  agregarComentario(): void {
-
+  eliminarComentario(id: string): void {
     if(this.authService.isAuthenticated()){
-      
-      if (!this.nuevoComentario) {
-        this.errorMessage = 'Debe agregar un comentario o reseña';
-        return;
-      }else{
-        this.errorMessage = "";
+      // Confirmación de eliminación
+      const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este comentario?');
+      if (confirmDelete) {
+        // Llamamos al servicio para eliminar el comentario
+        this.comentarioService.eliminarComentario(id); 
+        console.log('Comentario eliminado con éxito');
       }
-
-      if (this.nuevoComentario.trim() && ['viewer'].includes(this.authService.getRole())) {
-
-        //Accede a usuario logueado
-        this.auth_commit = this.authService.getCurrentUser();
-        //Accede a fecha y hora actual
-        this.commit_fecha = this.comentarioService.getFormattedDateTime();
-       
-        // // Si encontramos el comentario, asignamos el avatar correspondiente
-        // let avatar = "../assets/img/user.jpg"; // Imagen predeterminada
-
-        // if (this.auth_commit.imagen) {
-        //   // Si el comentario existe, asignamos el avatar del comentario
-        //   avatar = this.auth_commit.imagen;
-        // }
-
-        const nuevo = {
-          id: (this.comentarios.length + 1).toString(),
-          com_username: this.auth_commit?.username,
-          com_descripcion: this.nuevoComentario,
-          com_fecha: this.commit_fecha,
-          user_id: this.auth_commit?.id // Añadir el user_id
-        };
-        // console.log("Nuevo comentario",nuevo);
-
-        this.comentarioService.agregarComentario(nuevo);
-        this.nuevoComentario = ''; // Limpiar el input
-        
-      }
-   
     }else{
-      this.router.navigate(['/login']);
       console.log("Usuario No Autenticado",this.authService.isAuthenticated());
     }
   }
-
-
-
   
 }

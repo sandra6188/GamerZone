@@ -27,7 +27,7 @@ export class SobreNosotrosService {
   }
 
   getDescripcion(): string {
-   // localStorage.removeItem('imagen_sobre_nosotros'); borra la imagen de local Storage
+   // localStorage.removeItem('imagen_sobre_nosotros'); //borra la imagen de local Storage
     return this.descripcionSource.getValue();
   }
 

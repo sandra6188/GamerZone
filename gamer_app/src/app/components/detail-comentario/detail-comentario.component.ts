@@ -81,9 +81,7 @@ export class DetailComentarioComponent {
 
   redirectToLogin() {
     if (this.authService.isAuthenticated()) {
-      if (['viewer'].includes(this.authService.getRole())) {
-        // No se permite editar
-      } else if (['admin'].includes(this.authService.getRole())) {
+      if (['admin'].includes(this.authService.getRole())) {
         if (this.comentario.id && this.comentario.id !== '') {
           this.actualizarComentario();
         }/* else {
@@ -183,10 +181,4 @@ export class DetailComentarioComponent {
     return true;
   }
 
-  regresarListar() {
-    console.log("dentra aquiii", this.authService.getRole());
-    if (this.authService.isAuthenticated() && ['admin'].includes(this.authService.getRole())) {
-      this.router.navigate(['/comentarios']);
-    }
-  }
 }

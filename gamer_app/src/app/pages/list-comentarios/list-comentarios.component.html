@@ -3,15 +3,7 @@
     <div class="card">
         <section class="comentarios-container">
             <div class="comentarios-grid">
-                <form (submit)="redirectToLogin()" *ngIf="auth =='viewer' || (auth !== 'viewer' && auth !== 'admin')">
-                    <div *ngIf="auth =='viewer' || (auth !== 'viewer' && auth !== 'admin')">
-                        <p class="title-p-com">Comentario</p>
-                        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-                        <textarea [(ngModel)]="nuevoComentario" class="class-com-input"  name="comentario_descripcion" rows="8"  placeholder="Escribe tu comentario aquí..."></textarea>
-                        <button class="button-comentario" name="enviar" (click)="agregarComentario()" >Enviar</button>
-                    </div>
-                </form>
-                
+                <p class="title-p-com-admin" *ngIf="auth =='admin'">Listar Comentarios</p>
                 <div class="comentario-card" *ngFor="let comentario of comentarios  | paginate: { itemsPerPage: itemsPerPage, currentPage: page}">
                     <img [src]="comentario.imagen" alt="Avatar de {{comentario.com_username}}" class="avatar">
                     <div class="comentario-content">
@@ -19,7 +11,10 @@
                         <p class="descripcion">{{ comentario.com_descripcion }}</p>
                         <span class="fecha">{{ comentario.com_fecha | date:'yyyy-MM-dd HH:mm:ss' }}</span>
                     </div>
-                  
+                    <div class="div-buttons" *ngIf="auth =='admin'">
+                        <button class="bt-prod-card-edit" [routerLink]="['/detail-comentario', comentario.id]">Actualizar</button>
+                        <button class="bt-prod-card-delete" (click)="eliminarComentario(comentario.id)">Eliminar</button>
+                    </div>
                 </div>
                 <br>
                 <!-- Controles de paginación -->
