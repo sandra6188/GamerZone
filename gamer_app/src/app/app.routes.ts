@@ -73,5 +73,5 @@ export const routes: Routes = [
     {path: 'detail-comentario/:id', component:DetailComentarioComponent, canActivate: [AuthSinChildGuard,RoleGuard]},
     {path: 'detail-usuario', component: DetailUsuarioComponent, canActivate: [AuthSinChildGuard,RoleGuard]},   
     {path: 'detail-usuario/:id', component:DetailUsuarioComponent, canActivate: [AuthSinChildGuard,RoleGuard]},
-    {path: 'detail-addcarrito/:id', component:DetailAddcarritoComponent, canActivate: [AuthSinChildGuard,RoleGuard]}
+    {path: 'detail-addcarrito/:id', component:DetailAddcarritoComponent, canActivate: [AuthSinChildGuard]}
 ];
