@@ -28,7 +28,7 @@ export const routes: Routes = [
           { path: 'detail-producto/:id', component: DetailProductoComponent }
         ],
     },
-    {path: 'comentarios', component:ComentarioComponent, canActivate: [AuthSinChildGuard]},
+    {path: 'comentarios', component:ComentarioComponent},
     {
         path: 'list-comentarios',
         component: ListComentariosComponent,
