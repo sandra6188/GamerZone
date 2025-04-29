@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "com_username": "juanitoGamer",
+    "com_descripcion": "Este juego es increíble, lo recomiendo totalmente.",
+    "com_fecha": "2025-03-24 14:30:15",
+    "com_calificacion": "Excelente",
+    "user_id": 3
+  },
+  {
+    "id": 2,
+    "com_username": "carlosGodOfWar",
+    "com_descripcion": "No me convenció mucho la jugabilidad, pero la historia es buena.",
+    "com_fecha": "2025-03-23 18:45:00",
+    "com_calificacion": "Bueno",
+    "user_id": 4
+  },
+  {
+    "id": 3,
+    "com_username": "maria_souldark",
+    "com_descripcion": "Los gráficos son impresionantes, pero el rendimiento puede mejorar.",
+    "com_fecha": "2025-03-22 21:10:30",
+    "com_calificacion": "Malo",
+    "user_id": 5
+  },
+  {
+    "id": 4,
+    "com_username": "shadow_slayer",
+    "com_descripcion": "Me encantó la banda sonora, súper inmersiva.",
+    "com_fecha": "2025-03-21 09:25:45",
+    "com_calificacion": "Excelente",
+    "user_id": 6
+  },
+  {
+    "id": 6,
+    "com_username": "shadow_slayer",
+    "com_descripcion": "Esperaba más contenido en el juego base, pero está bien.",
+    "com_fecha": "2025-03-19 12:40:50",
+    "com_calificacion": "Regular",
+    "user_id": 6
+  }
+]
