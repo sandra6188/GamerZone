@@ -1,50 +1,115 @@
 .footer {
     background: linear-gradient(to right, rgb(73, 20, 196), rgb(30, 139, 153));
-    position: fixed;  /* Fija el footer */
-    bottom: 0;        /* Lo posiciona en la parte inferior */
+    position: fixed;
+    bottom: 0;
     left: 0;
-    width: 100%;      /* Ocupa todo el ancho de la pantalla */
-}
-
-.sec-footer {
+    width: 100%;
+    color: white;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .sec-footer {
     display: flex;
     justify-content: space-around;
-    color: white;
+    align-items: center;
     text-align: center;
-    padding-bottom: 10px;
-    margin-right: 20px;
-}
-
-.sec-social {
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    text-align: center;
-    padding-bottom: 8px;
-    margin-left: 20px;
-}
-
-/* Estilos para los íconos de redes sociales */
-.social-icons {
+    padding: 20px 10px;
+    flex-wrap: wrap;
+  }
+  
+  .sec-footer .div-p {
+    margin: 10px;
+  }
+  
+  .sec-social {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0px;
-}
-
-.social-icons a {
-    margin: 0 15px;
+    padding-bottom: 15px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    gap: 20px;
+  }
+  
+  .social-icons a {
     font-size: 30px;
     color: #ffffff;
     transition: color 0.3s ease;
     text-decoration: none;
-}
-
-.social-icons a:hover {
-    color: #ff476f; /* Cambiar el color al pasar el mouse */
-}
-
-/* Estilos de los íconos de redes sociales */
-.social-icon i {
-    font-size: 40px; /* Tamaño del ícono */
-}
+  }
+  
+  .social-icons a:hover {
+    color: #ff476f;
+  }
+  
+  .social-icon i {
+    font-size: 30px;
+  }
+  
+  /* =============== Responsive por dispositivos =================== */
+  
+  /* Celulares (ancho menor a 600px) */
+  @media (max-width: 599px) {
+    .sec-footer {
+      flex-direction: column;
+      text-align: center;
+    }
+    .sec-footer .div-p {
+      margin-bottom: 15px;
+    }
+    .social-icons {
+      flex-direction: row;
+      gap: 15px;
+    }
+  }
+  
+  /* Tablets (600px a 1024px) */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .sec-footer {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .social-icons {
+      gap: 25px;
+    }
+  }
+  
+  /* Laptops medianas (1025px a 1440px) */
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .sec-footer {
+      justify-content: space-around;
+    }
+  }
+  
+  /* Monitores grandes (1441px a 1920px) */
+  @media (min-width: 1441px) and (max-width: 1920px) {
+    .sec-footer {
+      justify-content: space-evenly;
+      padding: 20px 100px;
+    }
+    .social-icons {
+      gap: 30px;
+    }
+  }
+  
+  /* Ultra monitores (más de 1920px) */
+  @media (min-width: 1921px) {
+    .footer {
+      max-width: 1920px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+    .sec-footer {
+      justify-content: space-evenly;
+      padding: 20px 150px;
+    }
+  }
+  

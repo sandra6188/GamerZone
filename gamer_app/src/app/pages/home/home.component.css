@@ -1,61 +1,175 @@
+/* Base para el fondo */
 .background {
   background-image: url('../../../../public/assets/img/logo5.webp');
-  /* background-size: cover; */
   background-size: 90vh 50vh;
   background-repeat: repeat;
+  background-position: center;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
 }
 
+/* Sección principal del home */
 .sec-home {
   display: flex;
-  justify-content: space-around;
-  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .card {
-    width: 85%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    /* background: linear-gradient(to right, rgb(93, 208, 212), rgb(131, 105, 221)); */
-    /* background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0)); */
-    background: linear-gradient(217deg, rgb(73, 1, 1), rgba(255, 0, 0, 0) 70.71%),
+/* Estilos de la tarjeta (card) */
+.card {
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(217deg, rgb(73, 1, 1), rgba(255, 0, 0, 0) 70.71%),
     linear-gradient(127deg, rgba(23, 0, 230, 0.8), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(336deg, rgba(5, 113, 156, 0.8), rgba(0, 0, 255, 0.171) 70.71%),
     linear-gradient(336deg, rgba(42, 4, 148, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3%;
+}
 
-    border-radius: 10px;
-    overflow: hidden;
-    /* text-align: justify; */
-    transition: transform 0.3s;
-    padding: 3%;
-    display: flex;
-    justify-content: space-around;
-  }
+.card:hover {
+  transform: scale(1.05);
+}
 
-  .card:hover {
-    transform: scale(1.05);
-  }
+.card-img {
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+}
 
-  .card-img {
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+.card-content {
+  flex: 1;
+  padding: 15px 30px;
+  text-align: justify;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+
+.card-description {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* ============ Media Queries detalladas =============== */
+
+/* Celulares pequeños: hasta 480px */
+@media (max-width: 480px) {
+  .sec-home .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .card-content {
-    padding: 15px;
-    padding-left: 50px;
-    text-align: justify;
+    padding: 20px 10px;
+  }
+}
+
+/* Celulares grandes y pequeños tablets: 481px - 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .sec-home .card {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card-title {
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
+  .card-img {
+    width: 90%;
+  }
+}
+
+/* Tablets medianos y grandes: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sec-home .card {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card-description {
-    font-size: 20px;
-    color: #ffffff;
+  .card-img {
+    width: 80%;
+  }
+}
+
+/* Laptops pequeñas: 1024px - 1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .sec-home .card {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .card-img {
+    width: 45%;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+}
+
+/* Laptops estándar (13-15 pulgadas): 1280px - 1439px */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .sec-home .card {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .card-img {
+    width: 40%;
+  }
+
+  .card-content {
+    padding: 25px;
+  }
+}
+
+/* Monitores normales FullHD (15-17 pulgadas): 1440px - 1919px */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .sec-home .card {
+    max-width: 1400px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .card-img {
+    width: 40%;
+  }
+}
+
+/* Monitores grandes 2K: 1920px - 2559px */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .sec-home .card {
+    max-width: 1600px;
+    justify-content: space-around;
+  }
+
+  .card-img {
+    width: 35%;
+  }
+}
+/* Monitores 4K y más */
+@media (min-width: 2560px) {
+  .sec-home .card {
+    max-width: 8000px;
+    justify-content: space-evenly;
+    min-height: 600px; /* Altura mínima para pantallas grandes */
+  }
+
+  .card-img {
+    width: 30%;
   }
 }

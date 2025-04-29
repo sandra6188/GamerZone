@@ -1,56 +1,47 @@
 <header class="header">
-    <nav>
+    <nav class="nav">
+      <div class="logo-container">
         <img class="brand-logo" src="assets/img/logo2.png" alt="Logo">
         <img class="brand-logo" src="assets/img/logo_name.png" alt="Logo">
-        <section class="sec-list">
-            
-            <div class="class-div" *ngIf="user.rol =='viewer' || (user.rol !== 'viewer' && user.rol !== 'admin')">
-                <button class="but-list"><a routerLink="/" class="link">Sobre Nosotros</a></button>
-                <button class="but-list"><a routerLink="/productos" class="link">Servicios</a></button>
-                <button class="but-list"><a routerLink="/comentarios" class="link">Reseñas</a></button>
-                <button class="but-list"><a routerLink="/contactos" class="link">Contactos</a></button>
+      </div>
+  
+      <div class="nav-buttons">
+        <div class="menu-buttons" *ngIf="user.rol == 'viewer' || (user.rol !== 'viewer' && user.rol !== 'admin')">
+          <a routerLink="/" class="nav-link">Sobre Nosotros</a>
+          <a routerLink="/productos" class="nav-link">Servicios</a>
+          <a routerLink="/comentarios" class="nav-link">Reseñas</a>
+          <a routerLink="/contactos" class="nav-link">Contactos</a>
+        </div>
+  
+        <div class="menu-buttons" *ngIf="user.rol == 'admin'">
+          <a routerLink="/sobrenosotros" class="nav-link">Sobre Nosotros</a>
+          <a routerLink="/productos" class="nav-link">Servicios</a>
+          <a routerLink="/list-comentarios" class="nav-link">Reseñas</a>
+          <a routerLink="/usuario" class="nav-link">Contactos/Usuarios</a>
+        </div>
+  
+        <div class="user-actions">
+          <div class="dropdown" *ngIf="user.rol == 'admin' || user.rol == 'viewer'">
+            <button class="dropdown-btn">
+              {{ user.username }} ⌵
+              <span *ngIf="user.rol == 'viewer' && cantidadCarrito > 0" class="carrito-notificacion">
+                {{ cantidadCarrito }}
+              </span>
+            </button>
+            <div class="dropdown-content">
+              <a routerLink="/perfil">Mi perfil</a>
+              <a href="#">Mi carrito</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="logout" (click)="logout()">Cerrar sesión</a>
             </div>
-            <div class="class-div" *ngIf="user.rol =='admin'">
-                <button class="but-list-2"><a routerLink="/sobrenosotros" class="link">Sobre Nosotros</a></button>
-                <button class="but-list-2"><a routerLink="/productos" class="link">Servicios</a></button>
-                <button class="but-list-2"><a routerLink="/list-comentarios" class="link">Reseñas</a></button>
-                <button class="but-list-2"><a routerLink="/usuario" class="link">Contactos / Usuarios</a></button>
-            </div>
-        </section>
-        <section class="sec-list-2">
-            <div class="class-div" *ngIf="user.rol == 'admin'">
-                <div class="dropdown">
-                    <button class="dropdown-btn">{{ user.username }} ⌵</button>
-                    <div class="dropdown-content">
-                        <a routerLink="/perfil">Mi perfil</a>
-                        <a routerLink="/sobrenosotros">Mi carrito</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="logout" *ngIf="user" (click)="logout()">Cerrar sesión</a>
-                    </div>
-                </div>
-            </div>
-            <div class="class-div" *ngIf="user.rol == 'viewer'">
-                <div class="dropdown">
-                    <button class="dropdown-btn">{{ user.username }}  <!--{{ user.rol }} -->⌵
-                        <span *ngIf="cantidadCarrito > 0" class="carrito-notificacion">
-                            {{ cantidadCarrito }}
-                        </span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a routerLink="/perfil">Mi perfil</a>
-                        <a href="#">Mi carrito</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="logout" *ngIf="user" (click)="logout()">Cerrar sesión</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="class-div" *ngIf="user && user.rol !== 'viewer' && user.rol !== 'admin'">
-                <a routerLink="/register" class="link-login">Registrarse</a>
-                <a routerLink="/login" class="link-login">Login</a>
-            </div>
-
-        </section>
-      
+          </div>
+  
+          <div *ngIf="user && user.rol !== 'viewer' && user.rol !== 'admin'" class="auth-links">
+            <label routerLink="/register" class="auth-label">Registrarse</label>
+            <label routerLink="/login" class="auth-label">Login</label>
+          </div>
+        </div>
+      </div>
     </nav>
-</header>
+  </header>
+  
