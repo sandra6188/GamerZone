@@ -18,7 +18,7 @@
   }
   
   .sec-footer .div-p {
-    margin: 10px;
+    margin: -5px;
   }
   
   .sec-social {
@@ -52,64 +52,66 @@
   }
   
   /* =============== Responsive por dispositivos =================== */
-  
-  /* Celulares (ancho menor a 600px) */
-  @media (max-width: 599px) {
-    .sec-footer {
-      flex-direction: column;
-      text-align: center;
-    }
-    .sec-footer .div-p {
-      margin-bottom: 15px;
-    }
-    .social-icons {
-      flex-direction: row;
-      gap: 15px;
-    }
+
+/* Celulares (ancho menor a 600px) */
+@media (max-width: 599px) {
+  .sec-footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 10px; /* Menor padding para celulares */
   }
-  
-  /* Tablets (600px a 1024px) */
-  @media (min-width: 600px) and (max-width: 1024px) {
-    .sec-footer {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .social-icons {
-      gap: 25px;
-    }
+  .sec-footer .div-p {
+    margin-bottom: 10px;
   }
-  
-  /* Laptops medianas (1025px a 1440px) */
-  @media (min-width: 1025px) and (max-width: 1440px) {
-    .sec-footer {
-      justify-content: space-around;
-    }
+  .social-icons {
+    flex-direction: row;
+    gap: 10px;
   }
-  
-  /* Monitores grandes (1441px a 1920px) */
-  @media (min-width: 1441px) and (max-width: 1920px) {
-    .sec-footer {
-      justify-content: space-evenly;
-      padding: 20px 100px;
-    }
-    .social-icons {
-      gap: 30px;
-    }
+}
+
+/* Tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .sec-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 20px;
+    gap: 20px;
   }
-  
-  /* Ultra monitores (más de 1920px) */
-  @media (min-width: 1921px) {
-    .footer {
-      max-width: 1920px;
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-    }
-    .sec-footer {
-      justify-content: space-evenly;
-      padding: 20px 150px;
-    }
+  .social-icons {
+    gap: 20px;
   }
-  
+}
+
+/* Laptops medianas (1025px a 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .sec-footer {
+    justify-content: space-around;
+    padding: 10px 40px;
+  }
+}
+
+/* Monitores grandes (1441px a 1920px) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .sec-footer {
+    justify-content: space-evenly;
+    padding: 10px 80px;
+  }
+  .social-icons {
+    gap: 25px;
+  }
+}
+
+/* Ultra monitores (más de 1920px) */
+@media (min-width: 1921px) {
+  .footer {
+    max-width: 1920px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+  .sec-footer {
+    justify-content: space-evenly;
+    padding: 10px 120px;
+  }
+}

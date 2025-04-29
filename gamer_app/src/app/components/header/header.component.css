@@ -13,7 +13,8 @@
   
   .logo-container {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Hace que los hijos se apilen verticalmente */
+    align-items: center; /* Opcional: centra las imágenes horizontalmente */
   }
   
   .brand-logo {
